@@ -47,5 +47,17 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+        public string Lead
+        {
+            get;
+            set;
+        }
+
+        public string Prospect
+        {
+            get;
+            set;
+        }
+
     }
 }
