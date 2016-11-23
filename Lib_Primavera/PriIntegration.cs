@@ -30,7 +30,7 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT Cliente, Nome, Moeda, NumContrib as NumContribuinte, Fac_Mor AS campo_exemplo FROM  CLIENTES");
+                objList = PriEngine.Engine.Consulta("SELECT Cliente, Nome, Moeda, Distrito, NumContrib as NumContribuinte, Fac_Mor AS campo_exemplo FROM  CLIENTES");
 
                 
                 while (!objList.NoFim())
@@ -41,7 +41,8 @@ namespace FirstREST.Lib_Primavera
                         NomeCliente = objList.Valor("Nome"),
                         Moeda = objList.Valor("Moeda"),
                         NumContribuinte = objList.Valor("NumContribuinte"),
-                        Morada = objList.Valor("campo_exemplo")
+                        Morada = objList.Valor("campo_exemplo"),
+                        Distrito = objList.Valor("Distrito")
                         //Lead = objList.Valor("CDU_CampoVar1"),  //Lead boolean 1=true;
                         //Prospect = objList.Valor("CDU_CampoVar2") // Prospect boolean 1=true;
                     });
@@ -75,6 +76,7 @@ namespace FirstREST.Lib_Primavera
                     myCli.Moeda = objCli.get_Moeda();
                     myCli.NumContribuinte = objCli.get_NumContribuinte();
                     myCli.Morada = objCli.get_Morada();
+                    myCli.Distrito = objCli.get_Distrito();
                     return myCli;
                 }
                 else
