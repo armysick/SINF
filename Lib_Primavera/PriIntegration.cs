@@ -196,8 +196,7 @@ namespace FirstREST.Lib_Primavera
             Lib_Primavera.Model.RespostaErro erro = new Model.RespostaErro();
             
 
-            GcpBECliente myCli = new GcpBECliente();
-
+            GcpBECliente myCli = new GcpBECliente();            
             try
             {
                 if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)

@@ -25,7 +25,7 @@ namespace FirstREST.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("EMPRESA")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DEMOSINF")]
         public string Company {
             get {
                 return ((string)(this["Company"]));
