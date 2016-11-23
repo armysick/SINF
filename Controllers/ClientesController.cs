@@ -13,6 +13,10 @@ namespace FirstREST.Controllers
     {
         //
         // GET: /Clientes/
+        /// <summary>
+        /// Get All Clients' information;
+        /// </summary>
+        /// <returns>A IEnumerable [List]with relevant information</returns>
 
         public IEnumerable<Lib_Primavera.Model.Cliente> Get()
         {
@@ -21,6 +25,11 @@ namespace FirstREST.Controllers
 
 
         // GET api/cliente/5    
+        /// <summary>
+        /// Get Relevant information from a specific client
+        /// </summary>
+        /// <param name="id">Client name</param>
+        /// <returns>Cliente object</returns>
         public Cliente Get(string id)
         {
             Lib_Primavera.Model.Cliente cliente = Lib_Primavera.PriIntegration.GetCliente(id);
@@ -36,7 +45,11 @@ namespace FirstREST.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Adds new Cliente to database
+        /// </summary>
+        /// <param name="cliente">Cliente to be added</param>
+        /// <returns>HttpResponseMessage with success/failure status</returns>
         public HttpResponseMessage Post(Lib_Primavera.Model.Cliente cliente)
         {
             Lib_Primavera.Model.RespostaErro erro = new Lib_Primavera.Model.RespostaErro();
@@ -58,7 +71,12 @@ namespace FirstREST.Controllers
 
         }
 
-
+        /// <summary>
+        /// Fully updates an existing Cliente
+        /// </summary>
+        /// <param name="id">Cliente id</param>
+        /// <param name="cliente">Updated Cliente to replace the old one</param>
+        /// <returns>HttpResponseMessage with success/failure status</returns>
         public HttpResponseMessage Put(string id, Lib_Primavera.Model.Cliente cliente)
         {
 
@@ -84,7 +102,11 @@ namespace FirstREST.Controllers
         }
 
 
-
+        /// <summary>
+        /// Deletes an existing Client
+        /// </summary>
+        /// <param name="id">Cliente ID</param>
+        /// <returns>HttpResponseMessage with success/failure status</returns>
         public HttpResponseMessage Delete(string id)
         {
 

@@ -64,3 +64,4 @@ C:\sinfproj\SINF\bin\System.Web.WebPages.Razor.xml
 C:\sinfproj\SINF\obj\Debug\FirstREST.csprojResolveAssemblyReference.cache
 C:\sinfproj\SINF\obj\Debug\FirstREST.dll
 C:\sinfproj\SINF\obj\Debug\FirstREST.pdb
+C:\sinfproj\SINF\bin\XmlDocument.xml

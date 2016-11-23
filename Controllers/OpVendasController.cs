@@ -13,6 +13,11 @@ namespace FirstREST.Controllers
     {
         //
         // GET: /OpVendas/1
+        /// <summary>
+        /// Get a Vendedor's list of Oportunidades de Venda
+        /// </summary>
+        /// <param name="id">Vendedor_ID</param>
+        /// <returns>IEnumerable [List] with all OpVenda associated with the Vendedor</returns>
 
         public IEnumerable<Lib_Primavera.Model.OpVenda> Get(string id)
         {

@@ -30,6 +30,7 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
+                
                 objList = PriEngine.Engine.Consulta("SELECT Cliente, Nome, Moeda, Distrito, NumContrib as NumContribuinte, Fac_Mor AS campo_exemplo FROM  CLIENTES");
 
                 
@@ -59,7 +60,7 @@ namespace FirstREST.Lib_Primavera
         public static Lib_Primavera.Model.Cliente GetCliente(string codCliente)
         {
             
-
+            
             GcpBECliente objCli = new GcpBECliente();
 
 
@@ -67,7 +68,6 @@ namespace FirstREST.Lib_Primavera
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
-
                 if (PriEngine.Engine.Comercial.Clientes.Existe(codCliente) == true)
                 {
                     objCli = PriEngine.Engine.Comercial.Clientes.Edita(codCliente);
@@ -349,7 +349,27 @@ namespace FirstREST.Lib_Primavera
 
         #endregion Artigo
 
-   
+
+        #region Distrito
+        public static Lib_Primavera.Model.Distrito GetDescricaoDistrito(string code)
+        {
+            StdBELista objList;
+            Model.Distrito myDistrito = new Model.Distrito();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT Descricao from Distritos WHERE Distrito = '" + code + "'");
+
+                myDistrito.Descricao = objList.Valor("Descricao");
+                return myDistrito;
+            }
+            return null;
+
+
+
+        }
+
+        #endregion Distrito   // End Distrito  //
 
         /*#region DocCompra
         
