@@ -15,6 +15,12 @@ namespace FirstREST.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        // GET api/values
+        public IEnumerable<string> Get(string id)
+        {
+            return new string[] { "value1", "value2" };
+        }
+
         // GET api/values/5
         public string Get(int id)
         {

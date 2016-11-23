@@ -239,7 +239,7 @@ namespace FirstREST.Lib_Primavera
 
         #region OpVenda;
 
-        public static List<Model.OpVenda> ListaOpVendas()
+        public static List<Model.OpVenda> ListaOpVendasByVendedor(string vendedor_id)
         {
 
 
@@ -252,7 +252,7 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT ID, Entidade, Vendedor, BarraPercentual FROM CABECOPORTUNIDADESVENDA");
+                objList = PriEngine.Engine.Consulta("SELECT ID, Entidade, Vendedor, BarraPercentual FROM CABECOPORTUNIDADESVENDA WHERE Vendedor = '"+vendedor_id + "'");
 
 
                 while (!objList.NoFim())

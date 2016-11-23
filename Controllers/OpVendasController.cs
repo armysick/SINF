@@ -12,11 +12,11 @@ namespace FirstREST.Controllers
     public class OpVendasController : ApiController
     {
         //
-        // GET: /OpVendas/
+        // GET: /OpVendas/1
 
-        public IEnumerable<Lib_Primavera.Model.OpVenda> Get()
+        public IEnumerable<Lib_Primavera.Model.OpVenda> Get(string id)
         {
-                return Lib_Primavera.PriIntegration.ListaOpVendas();
+                return Lib_Primavera.PriIntegration.ListaOpVendasByVendedor(id);
         }
 
         /*
