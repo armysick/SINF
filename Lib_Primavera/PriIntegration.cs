@@ -7,6 +7,7 @@ using Interop.StdPlatBS900;
 using Interop.StdBE900;
 using Interop.GcpBE900;
 using ADODB;
+using Interop.CrmBE900;
 
 namespace FirstREST.Lib_Primavera
 {
@@ -275,6 +276,10 @@ namespace FirstREST.Lib_Primavera
         }
 
         #endregion OpVenda  //----------------- END OPVenda --------------- //
+
+
+
+
         #region Artigo
 
         public static Lib_Primavera.Model.Artigo GetArtigo(string codArtigo)

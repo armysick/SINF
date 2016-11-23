@@ -9,3 +9,8 @@ Ciclo de venda
 Cabec!!!!!!!!!!!!!
 
 @OportunidadeVenda "BarraPercentual" diz em que estado se está.
+
+// POST: 
+
+
+CrmBEOportunidadesVenda  
