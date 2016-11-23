@@ -5,11 +5,11 @@ using System.Web;
 
 namespace FirstREST.Lib_Primavera.Model
 {
-    public class Cliente
+    public class OpVenda
     {
-        public string Morada;
+        /*public string Entidade;
 
-        /* Exemplo para POST e GET com valores específicos
+         Exemplo para POST e GET com valores específicos
          public string Morada
         {
             get
@@ -22,42 +22,33 @@ namespace FirstREST.Lib_Primavera.Model
             }
         }
     
-*/       
-        public string CodCliente
+*/
+
+        public String ID
         {
             get;
             set;
         }
 
-       public string NomeCliente
+        public string Entidade   //  Id Cliente
         {
             get;
             set;
         }
 
-        public string NumContribuinte
+        public string Vendedor  //  Id Vendedor 
         {
             get;
             set;
         }
 
-        public string Moeda
+       public int BarraPercentual   // % de Completo o ciclo de venda (dependente do estado em que se encontra)
         {
             get;
             set;
         }
 
-        /*public string Lead
-        {
-            get;
-            set;
-        }
-
-        public string Prospect
-        {
-            get;
-            set;
-        }*/
+        
 
     }
 }

@@ -29,7 +29,7 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT Cliente, Nome, CDU_CampoVar1, CDU_CampoVar2, Moeda, NumContrib as NumContribuinte, Fac_Mor AS campo_exemplo FROM  CLIENTES");
+                objList = PriEngine.Engine.Consulta("SELECT Cliente, Nome, Moeda, NumContrib as NumContribuinte, Fac_Mor AS campo_exemplo FROM  CLIENTES");
 
                 
                 while (!objList.NoFim())
@@ -40,9 +40,9 @@ namespace FirstREST.Lib_Primavera
                         NomeCliente = objList.Valor("Nome"),
                         Moeda = objList.Valor("Moeda"),
                         NumContribuinte = objList.Valor("NumContribuinte"),
-                        Morada = objList.Valor("campo_exemplo"),
-                        Lead = objList.Valor("CDU_CampoVar1"),  //Lead boolean 1=true;
-                        Prospect = objList.Valor("CDU_CampoVar2") // Prospect boolean 1=true;
+                        Morada = objList.Valor("campo_exemplo")
+                        //Lead = objList.Valor("CDU_CampoVar1"),  //Lead boolean 1=true;
+                        //Prospect = objList.Valor("CDU_CampoVar2") // Prospect boolean 1=true;
                     });
                     objList.Seguinte();
 
@@ -237,6 +237,44 @@ namespace FirstREST.Lib_Primavera
         #endregion Cliente;   // -----------------------------  END   CLIENTE    -----------------------
 
 
+        #region OpVenda;
+
+        public static List<Model.OpVenda> ListaOpVendas()
+        {
+
+
+            StdBELista objList;
+
+            List<Model.OpVenda> listOpVendas = new List<Model.OpVenda>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
+
+                objList = PriEngine.Engine.Consulta("SELECT ID, Entidade, Vendedor, BarraPercentual FROM CABECOPORTUNIDADESVENDA");
+
+
+                while (!objList.NoFim())
+                {
+                    listOpVendas.Add(new Model.OpVenda
+                    {
+                        ID = objList.Valor("ID"),
+                        Entidade = objList.Valor("Entidade"),
+                        Vendedor = objList.Valor("Vendedor"),
+                        BarraPercentual = objList.Valor("BarraPercentual")
+                    });
+                    objList.Seguinte();
+
+                }
+
+                return listOpVendas;
+            }
+            else
+                return null;
+        }
+
+        #endregion OpVenda  //----------------- END OPVenda --------------- //
         #region Artigo
 
         public static Lib_Primavera.Model.Artigo GetArtigo(string codArtigo)
