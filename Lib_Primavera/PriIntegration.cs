@@ -489,7 +489,7 @@ namespace FirstREST.Lib_Primavera
 
         #endregion DocCompra
 
-
+        */
         #region DocsVenda
 
         public static Model.RespostaErro Encomendas_New(Model.DocVenda dv)
@@ -501,7 +501,7 @@ namespace FirstREST.Lib_Primavera
 
             GcpBELinhasDocumentoVenda myLinhas = new GcpBELinhasDocumentoVenda();
              
-            PreencheRelacaoVendas rl = new PreencheRelacaoVendas();
+            Interop.GcpBE900.PreencheRelacaoVendas rl = new Interop.GcpBE900.PreencheRelacaoVendas();
             List<Model.LinhaDocVenda> lstlindv = new List<Model.LinhaDocVenda>();
             
             try
@@ -512,11 +512,11 @@ namespace FirstREST.Lib_Primavera
                     //myEnc.set_DataDoc(dv.Data);
                     myEnc.set_Entidade(dv.Entidade);
                     myEnc.set_Serie(dv.Serie);
-                    myEnc.set_Tipodoc("ECL");
+                    myEnc.set_Tipodoc("FA");
                     myEnc.set_TipoEntidade("C");
                     // Linhas do documento para a lista de linhas
                     lstlindv = dv.LinhasDoc;
-                    PriEngine.Engine.Comercial.Vendas.PreencheDadosRelacionados(myEnc, rl);
+                    PriEngine.Engine.Comercial.Vendas.PreencheDadosRelacionados(myEnc);//PreencheDadosRelacionados(myEnc, rl); rl?
                     foreach (Model.LinhaDocVenda lin in lstlindv)
                     {
                         PriEngine.Engine.Comercial.Vendas.AdicionaLinha(myEnc, lin.CodArtigo, lin.Quantidade, "", "", lin.PrecoUnitario, lin.Desconto);
@@ -526,7 +526,7 @@ namespace FirstREST.Lib_Primavera
                    // PriEngine.Engine.Comercial.Compras.TransformaDocumento(
 
                     PriEngine.Engine.IniciaTransaccao();
-                    PriEngine.Engine.Comercial.Vendas.Edita.Actualiza(myEnc, "Teste");
+                    PriEngine.Engine.Comercial.Vendas.Actualiza(myEnc, "Teste");
                     PriEngine.Engine.TerminaTransaccao();
                     erro.Erro = 0;
                     erro.Descricao = "Sucesso";
@@ -603,7 +603,7 @@ namespace FirstREST.Lib_Primavera
             return listdv;
         }
 
-
+    
        
 
         public static Model.DocVenda Encomenda_Get(string numdoc)
@@ -653,6 +653,9 @@ namespace FirstREST.Lib_Primavera
             }
             return null;
         }
+
+
+
 
         #endregion DocsVenda*/
     }
