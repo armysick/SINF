@@ -30,6 +30,7 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+
         public string Entidade   //  Id Cliente
         {
             get;
@@ -42,13 +43,50 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
-       public int BarraPercentual   // % de Completo o ciclo de venda (dependente do estado em que se encontra)
+       public short BarraPercentual   // % de Completo o ciclo de venda (dependente do estado em que se encontra)
         {
             get;
             set;
         }
 
-        
+       public string Descricao
+       {
+           get;
+           set;
+       }
+
+       public string Moeda
+       {
+           get;
+           set;
+       }
+       public string CicloVenda
+       {
+           get;
+           set;
+       }
+       public string TipoEntidade
+       {
+           get;
+           set;
+       }
+
+       public DateTime DataCriacao
+       {
+           get;
+           set;
+       }
+       public DateTime DataExpiracao
+       {
+           get;
+           set;
+       }
+
+       public string Oportunidade
+       {
+           get;
+           set;
+       }
 
     }
 }

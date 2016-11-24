@@ -276,6 +276,116 @@ namespace FirstREST.Lib_Primavera
                 return null;
         }
 
+
+        public static Lib_Primavera.Model.RespostaErro UpdOpVenda(Lib_Primavera.Model.OpVenda opvenda)
+        {
+            Lib_Primavera.Model.RespostaErro erro = new Model.RespostaErro();
+
+
+
+            CrmBEOportunidadeVenda objOpVenda = new CrmBEOportunidadeVenda();
+
+            try
+            {
+
+                if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+                {
+
+                    if (PriEngine.Engine.CRM.OportunidadesVenda.Existe(opvenda.Oportunidade) == false)
+                    {
+                        erro.Erro = 1;
+                        erro.Descricao = "A oportunidade de venda não existe";
+                        return erro;
+                    }
+                    else
+                    {
+
+                        objOpVenda = PriEngine.Engine.CRM.OportunidadesVenda.Edita(opvenda.Oportunidade);
+                        objOpVenda.set_EmModoEdicao(true);
+
+                        objOpVenda.set_Entidade(opvenda.Entidade);
+                        objOpVenda.set_Vendedor(opvenda.Vendedor);
+                        objOpVenda.set_BarraPercentual(opvenda.BarraPercentual);
+
+                        PriEngine.Engine.CRM.OportunidadesVenda.Actualiza(objOpVenda);
+
+                        erro.Erro = 0;
+                        erro.Descricao = "Sucesso";
+                        return erro;
+                    }
+                }
+                else
+                {
+                    erro.Erro = 1;
+                    erro.Descricao = "Erro ao abrir a empresa";
+                    return erro;
+
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                erro.Erro = 1;
+                erro.Descricao = ex.Message;
+                return erro;
+            }
+
+        }
+
+
+        public static Lib_Primavera.Model.RespostaErro InsereOpVenda(Model.OpVenda opvenda)
+        {
+
+            Lib_Primavera.Model.RespostaErro erro = new Model.RespostaErro();
+            CrmBEOportunidadeVenda myOpVenda = new CrmBEOportunidadeVenda();
+            try
+            {
+                if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+                {
+                    myOpVenda.set_ID("");
+                    myOpVenda.set_Oportunidade(opvenda.Oportunidade);
+                    myOpVenda.set_Entidade(opvenda.Entidade);
+                    myOpVenda.set_Vendedor(opvenda.Vendedor);
+                    //short bpvalue = 5;
+                    myOpVenda.set_BarraPercentual(5);
+                    myOpVenda.set_Descricao(opvenda.Descricao);
+                    myOpVenda.set_Moeda(opvenda.Moeda);
+                    myOpVenda.set_CicloVenda(opvenda.CicloVenda);
+                    myOpVenda.set_TipoEntidade(opvenda.TipoEntidade);
+                    myOpVenda.set_DataCriacao(opvenda.DataCriacao);
+                    myOpVenda.set_DataExpiracao(opvenda.DataExpiracao);
+                    myOpVenda.set_EncomendaEfectuada(false);
+                    myOpVenda.set_TipoMargemPerc(false);
+
+
+
+                    PriEngine.Engine.CRM.OportunidadesVenda.Actualiza(myOpVenda);
+                    //PriEngine.Engine.CRM.OportunidadesVenda.ValidaActualizacao(myOpVenda, "");
+
+                    erro.Erro = 0;
+                    erro.Descricao = "Sucesso";
+                    return erro;
+                }
+                else
+                {
+                    erro.Erro = 1;
+                    erro.Descricao = "Erro ao abrir empresa";
+                    return erro;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                erro.Erro = 1;
+                erro.Descricao = ex.Message;
+                return erro;
+            }
+
+
+        }
+
+
         #endregion OpVenda  //----------------- END OPVenda --------------- //
 
 
