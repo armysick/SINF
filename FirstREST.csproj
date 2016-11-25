@@ -86,6 +86,10 @@
       <HintPath>..\..\..\Program Files\PRIMAVERA\SG900\Apl\Interop.ICblBS900.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Interop.ICrmBS900">
+      <HintPath>..\..\Program Files\PRIMAVERA\SG900\Apl\Interop.ICrmBS900.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Interop.ICrmDS900">
       <HintPath>..\..\..\Program Files\PRIMAVERA\SG900\Apl\Interop.ICrmDS900.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>

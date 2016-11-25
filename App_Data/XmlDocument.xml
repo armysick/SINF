@@ -410,6 +410,21 @@
             <param name="id">Vendedor_ID</param>
             <returns>IEnumerable [List] with all OpVenda associated with the Vendedor</returns>
         </member>
+        <member name="M:FirstREST.Controllers.OpVendasController.Post(FirstREST.Lib_Primavera.Model.OpVenda)">
+            <summary>
+            Adds new sales opportunity to database
+            </summary>
+            <param name="opvenda">OpVenda to be added [Entidade, Vendedor, BarraPercentual, Descricao, Moeda, CicloVenda, DataCri, DataExp, Oportunidade {OPV00X} ]</param>
+            <returns>HttpResponseMessage with success/failure status + erro.Descricao</returns>
+        </member>
+        <member name="M:FirstREST.Controllers.OpVendasController.Put(System.String,FirstREST.Lib_Primavera.Model.OpVenda)">
+            <summary>
+            Fully updates an existing sales opportunity
+            </summary>
+            <param name="id">OpVenda id [Oportunidade string "OPV00X"]</param>
+            <param name="opvenda">Updated OpVenda to replace the old one  [Entidade, Vendedor, BarraPercentual]</param>
+            <returns>HttpResponseMessage with success/failure status</returns>
+        </member>
         <member name="M:FirstREST.Controllers.ClientesController.Get">
             <summary>
             Get All Clients' information;
