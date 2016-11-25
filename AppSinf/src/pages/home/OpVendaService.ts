@@ -5,7 +5,7 @@
 import {Http,RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
-export class ClientService {
+export class OpVendaService {
   static get parameters() {
     return [[Http]];
   }
@@ -14,21 +14,21 @@ export class ClientService {
 
   }
 
-  searchClients() {
+  searchOpVenda(vid: any) {
     let opt: RequestOptions
     let myHeaders: Headers = new Headers;
     myHeaders.set('Access-Control-Allow-Origin', '*');
     myHeaders.append('Content-type', 'application/json');
     myHeaders.append('User', 'user');
     myHeaders.append('Password', 'Feup2016')
-    
+
 
     opt = new RequestOptions({
       headers: myHeaders
     })
 console.log("opt" + opt.headers);
 
-    var url = 'http://localhost:49822/api/Clientes';
+    var url = 'http://localhost:49822/api/OpVendas/'+ vid;
     var response = this.http.get(url,opt).map(res => res.json());
 
     return response;

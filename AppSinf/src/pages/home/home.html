@@ -9,16 +9,16 @@
   <ion-list>
     <ion-item>
       <ion-label floating>[teste]Introduza o seu ID de vendedor:</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [value]="vendedor_id" [(ngModel)]="vendedor_id"></ion-input>
     </ion-item>
     <button primary block  (click)="search()">Procurar Clientes</button>
   </ion-list>
 
   <ion-list>
-    <ion-item *ngFor="let CL of ClientList">
-      <p>{{CL.CodCliente}}</p>
-	<p>{{CL.Morada}}</p>
-	<p>{{CL.NumContribuinte}}</p>
+    <ion-item *ngFor="let OVs of OVList">
+
+	<p>{{OVs.Entidade}}</p>
+	<p>{{OVs.BarraPercentual}}</p>
     </ion-item>
   </ion-list>
 

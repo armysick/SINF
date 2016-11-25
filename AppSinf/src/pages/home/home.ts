@@ -41,34 +41,37 @@ import { NavController } from 'ionic-angular';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Component} from "@angular/core";
-import {ClientService} from './ClientService';
+import {OpVendaService} from './OpVendaService';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [ClientService]
+  providers: [OpVendaService]
 })
 
 
 export class HomePage {
 
-  ClientList: any;
+  OVList: any;
+  vendedor_id: any;
 
-  constructor(public navCtrl: NavController, private clientService: ClientService){
+  constructor(public navCtrl: NavController, private ovService: OpVendaService){
 
+    this.vendedor_id = 1;
 
   }
 
   search() {
-      this.clientService.searchClients().subscribe(
+    console.log(this.vendedor_id);
+      this.ovService.searchOpVenda(this.vendedor_id).subscribe(
         data => {
-          this.ClientList = data;
-          console.log(this.ClientList);
+          this.OVList = data;
+          console.log(this.OVList);
         },
         err => {
           console.log(err);
         },
-        () => console.log('Movie Search Complete')
+        () => console.log('OpVenda Search Complete')
       );
 
 }
