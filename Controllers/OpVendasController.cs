@@ -49,7 +49,7 @@ namespace FirstREST.Controllers
 
             else
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, erro);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, erro.Descricao);
             }
 
         }

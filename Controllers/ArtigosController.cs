@@ -15,6 +15,10 @@ namespace FirstREST.Controllers
     {
         //
         // GET: /Artigos/
+        /// <summary>
+        /// Get All Artigo' information.
+        /// </summary>
+        /// <returns></returns>
 
         public IEnumerable<Lib_Primavera.Model.Artigo> Get()
         {
@@ -23,6 +27,11 @@ namespace FirstREST.Controllers
 
 
         // GET api/artigo/5    
+        /// <summary>
+        /// Get Relevant information from a specific product.
+        /// </summary>
+        /// <param name="id">Id of the product requested.</param>
+        /// <returns></returns>
         public Artigo Get(string id)
         {
             Lib_Primavera.Model.Artigo artigo = Lib_Primavera.PriIntegration.GetArtigo(id);

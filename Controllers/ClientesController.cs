@@ -28,7 +28,7 @@ namespace FirstREST.Controllers
         /// <summary>
         /// Get Relevant information from a specific client
         /// </summary>
-        /// <param name="id">Client name</param>
+        /// <param name="id">Id of the client requested. </param>
         /// <returns>Cliente object</returns>
         public Cliente Get(string id)
         {
@@ -66,7 +66,7 @@ namespace FirstREST.Controllers
 
             else
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest,erro.Descricao);
             }
 
         }

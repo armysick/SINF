@@ -403,6 +403,19 @@
             <param name="id">Distrito ID</param>
             <returns>Distrito Model [Containing only Descricao]</returns>
         </member>
+        <member name="M:FirstREST.Controllers.ArtigosController.Get">
+            <summary>
+            Get All Artigo' information.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FirstREST.Controllers.ArtigosController.Get(System.String)">
+            <summary>
+            Get Relevant information from a specific product.
+            </summary>
+            <param name="id">Id of the product requested.</param>
+            <returns></returns>
+        </member>
         <member name="M:FirstREST.Controllers.OpVendasController.Get(System.String)">
             <summary>
             Get a Vendedor's list of Oportunidades de Venda
@@ -435,7 +448,7 @@
             <summary>
             Get Relevant information from a specific client
             </summary>
-            <param name="id">Client name</param>
+            <param name="id">Id of the client requested. </param>
             <returns>Cliente object</returns>
         </member>
         <member name="M:FirstREST.Controllers.ClientesController.Post(FirstREST.Lib_Primavera.Model.Cliente)">
@@ -459,6 +472,14 @@
             </summary>
             <param name="id">Cliente ID</param>
             <returns>HttpResponseMessage with success/failure status</returns>
+        </member>
+        <member name="M:FirstREST.Controllers.DocVendaController.Post(FirstREST.Lib_Primavera.Model.DocVenda)">
+            <summary>
+            
+            Adds new SalesOrder to the database.
+            </summary>
+            <param name="dv">Documento de venda.</param>
+            <returns></returns>
         </member>
     </members>
 </doc>

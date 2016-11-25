@@ -204,6 +204,15 @@ namespace FirstREST.Lib_Primavera
                 if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
                 {
 
+                     if (PriEngine.Engine.Comercial.Clientes.Existe(cli.CodCliente) == false)
+                    {
+                        erro.Erro = 1;
+                        erro.Descricao = "O cliente já existe";
+                        return erro;
+                    }
+                    else
+                    {
+
                     myCli.set_Cliente(cli.CodCliente);
                     myCli.set_Nome(cli.NomeCliente);
                     myCli.set_NumContribuinte(cli.NumContribuinte);
@@ -215,6 +224,7 @@ namespace FirstREST.Lib_Primavera
                     erro.Erro = 0;
                     erro.Descricao = "Sucesso";
                     return erro;
+                    }
                 }
                 else
                 {
@@ -466,14 +476,26 @@ namespace FirstREST.Lib_Primavera
             StdBELista objList;
             Model.Distrito myDistrito = new Model.Distrito();
 
-            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            try
             {
-                objList = PriEngine.Engine.Consulta("SELECT Descricao from Distritos WHERE Distrito = '" + code + "'");
 
-                myDistrito.Descricao = objList.Valor("Descricao");
-                return myDistrito;
+                if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+                {
+                    objList = PriEngine.Engine.Consulta("SELECT Descricao from Distritos WHERE Distrito = '" + code + "'");
+                    myDistrito.Descricao = objList.Valor("Descricao");
+                    return myDistrito;
+                }
+                else
+                {
+
+                    return null;
+                }
             }
-            return null;
+            catch (Exception exc)
+            {
+                return null;
+            }
+          
 
 
 
