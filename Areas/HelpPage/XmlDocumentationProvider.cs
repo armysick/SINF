@@ -31,6 +31,16 @@ namespace FirstREST.Areas.HelpPage
             _documentNavigator = xpath.CreateNavigator();
         }
 
+
+        public virtual string GetResponseDocumentation(HttpActionDescriptor actionDescriptor){
+            return "";
+        }
+
+        public virtual string GetDocumentation(HttpControllerDescriptor contDescriptor)
+        {
+            return "";
+        }
+
         public virtual string GetDocumentation(HttpActionDescriptor actionDescriptor)
         {
             XPathNavigator methodNode = GetMethodNode(actionDescriptor);

@@ -23,11 +23,12 @@ export class HomePage {
     })
     this.http.get("http://localhost:49822/api/Clientes",opt).subscribe (data => {
       console.log("Got Data");
-      this.items = JSON.parse(data._body).people;
+      this.posts = JSON.parse(data);
 
  //http://stackoverflow.com/questions/37841949/add-header-to-the-api-http-request-angular-2-ionic-2   });
 
-    console.log(this.posts[0].data);
+    console.log(data);
+  })
   }
   search(){
 
