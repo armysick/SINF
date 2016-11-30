@@ -8,4 +8,20 @@
 
 <ion-content padding>
 
+  <ion-list>
+    <button primary block  (click)="search()">Listar as minhas Oportunidades de Venda</button>
+  </ion-list>
+
+  <div *ngIf="myValue">
+    <ion-list>
+      <ion-item *ngFor="let OVs of OVList">
+        <p>{{OVs.Entidade}} || {{OVs.Descricao}}</p>
+        <p>{{OVs.BarraPercentual}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!-- TODO Viajar para Distrito
+  <!-- TODO Modal ionic 2 Component [INSERIR NOVA OPV] -->
+
 </ion-content>

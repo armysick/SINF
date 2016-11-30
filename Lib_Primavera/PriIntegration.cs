@@ -264,7 +264,7 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT ID, Entidade, Vendedor, BarraPercentual FROM CABECOPORTUNIDADESVENDA WHERE Vendedor = '"+vendedor_id + "'");
+                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, Vendedor, BarraPercentual FROM CABECOPORTUNIDADESVENDA WHERE Vendedor = '"+vendedor_id + "'");
 
 
                 while (!objList.NoFim())
@@ -274,7 +274,8 @@ namespace FirstREST.Lib_Primavera
                         ID = objList.Valor("ID"),
                         Entidade = objList.Valor("Entidade"),
                         Vendedor = objList.Valor("Vendedor"),
-                        BarraPercentual = objList.Valor("BarraPercentual")
+                        BarraPercentual = objList.Valor("BarraPercentual"),
+                        Descricao = objList.Valor("Descricao")
                     });
                     objList.Seguinte();
 

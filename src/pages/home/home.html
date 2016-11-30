@@ -6,21 +6,4 @@
 
 <ion-content padding>
   <h2>Welcome to Sales Force App!</h2>
-  <ion-list>
-    <ion-item>
-      <ion-label floating>Introduza o seu ID de vendedor:</ion-label>
-      <ion-input type="text" [value]="vendedor_id" [(ngModel)]="vendedor_id"></ion-input>
-    </ion-item>
-    <button primary block  (click)="search()">Procurar Clientes</button>
-  </ion-list>
-
-  <ion-list>
-    <ion-item *ngFor="let OVs of OVList">
-
-	<p>{{OVs.Entidade}}</p>
-	<p>{{OVs.BarraPercentual}}</p>
-    </ion-item>
-  </ion-list>
-
-
 </ion-content>
