@@ -26,6 +26,19 @@ namespace FirstREST.Controllers
             return Lib_Primavera.PriIntegration.ListaOpVendasByVendedor(id);
         }
 
+        //
+        // GET: /OpVendas/1?dis_id={dis_id}
+        /// <summary>
+        /// Get a Vendedor's list of Oportunidades de Venda
+        /// </summary>
+        /// <param name="id">Vendedor_ID</param>
+        /// <param name="dis_id">District_ID</param>
+        /// <returns>IEnumerable [List] with all OpVenda associated with the Vendedor and District</returns>
+
+        public IEnumerable<Lib_Primavera.Model.OpVenda> Get(string id, string dis_id)
+        {
+            return Lib_Primavera.PriIntegration.ListaOpVendasByVendedorAndDistrito(id, dis_id);
+        }
 
 
 

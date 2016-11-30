@@ -286,6 +286,40 @@ namespace FirstREST.Lib_Primavera
                 return null;
         }
 
+        public static List<Model.OpVenda> ListaOpVendasByVendedorAndDistrito(string vendedor_id, string distrito_id)
+        {
+
+
+            StdBELista objList;
+
+            List<Model.OpVenda> listOpVendas = new List<Model.OpVenda>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
+
+                objList = PriEngine.Engine.Consulta("SELECT ID, Entidade, CabecOportunidadesVenda.Vendedor, BarraPercentual FROM CabecOportunidadesVenda JOIN Clientes ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE CabecOportunidadesVenda.Vendedor = "+vendedor_id+" AND Clientes.Distrito = "+distrito_id+"; ");
+
+
+                while (!objList.NoFim())
+                {
+                    listOpVendas.Add(new Model.OpVenda
+                    {
+                        ID = objList.Valor("ID"),
+                        Entidade = objList.Valor("Entidade"),
+                        Vendedor = objList.Valor("Vendedor"),
+                        BarraPercentual = objList.Valor("BarraPercentual"),
+                    });
+                    objList.Seguinte();
+
+                }
+
+                return listOpVendas;
+            }
+            else
+                return null;
+        }
 
         public static Lib_Primavera.Model.RespostaErro UpdOpVenda(Lib_Primavera.Model.OpVenda opvenda)
         {

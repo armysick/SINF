@@ -423,6 +423,14 @@
             <param name="id">Vendedor_ID</param>
             <returns>IEnumerable [List] with all OpVenda associated with the Vendedor</returns>
         </member>
+        <member name="M:FirstREST.Controllers.OpVendasController.Get(System.String,System.String)">
+            <summary>
+            Get a Vendedor's list of Oportunidades de Venda
+            </summary>
+            <param name="id">Vendedor_ID</param>
+            <param name="dis_id">District_ID</param>
+            <returns>IEnumerable [List] with all OpVenda associated with the Vendedor and District</returns>
+        </member>
         <member name="M:FirstREST.Controllers.OpVendasController.Post(FirstREST.Lib_Primavera.Model.OpVenda)">
             <summary>
             Adds new sales opportunity to database
