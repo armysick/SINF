@@ -22,7 +22,7 @@ export class DistrictPage {
   OVList: any;
   DNameList: any;
   constructor(public navCtrl: NavController, private myService: GlobalService, private ovdService: OpVendaByDistritoService, private events: Events){
-    this.currentDistrict = 13;
+    this.currentDistrict = 12;
     this.search();
 
     this.events.subscribe('testDistrictChange',() => {

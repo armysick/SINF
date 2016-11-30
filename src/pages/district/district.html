@@ -8,14 +8,14 @@
 
   <ion-list>
     <ion-item  *ngFor="let DName of DNameList">
-      <p>{{DName.Descricao}}</p>
+      <p>{{DName.Descricao}}</p>   <!-- TODO no C# Retornar Descricao mesmo que vazio -->
     </ion-item>
   </ion-list>
 
 
   <ion-list>
     <ion-item *ngFor="let OVs of OVList">
-      <p>{{OVs.Entidade}} || {{OVs.Descricao}}</p>
+      <p>{{OVs.Entidade}} || {{OVs.Descricao}}</p>  <!-- TODO Ver acima. Mas acho que ja acontece -->
       <p>{{OVs.BarraPercentual}}</p>
     </ion-item>
   </ion-list>

@@ -9,7 +9,7 @@ export class GlobalService {
   iddistrito: number;
 
   constructor() {
-    this.iddistrito = 13;
+    this.iddistrito = 12;
     //this.vendedor_id = "1234";
   }
 }
