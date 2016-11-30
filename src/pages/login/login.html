@@ -1,0 +1,38 @@
+<ion-content padding class="page-login">
+
+  <ion-header>
+    <ion-navbar>
+      <ion-title>Login</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+  <ion-list>
+    <ion-row style="text-align:center;">
+      <h2 style="position: relative;left: 50%;top: 65%;transform: translate(-50%,-50%);"> SALES FORCE AUTOMATION</h2>
+    </ion-row>
+  </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-label text-center floating>Introduza o seu ID de vendedor:</ion-label>
+        <ion-input type="number" text-center [value]="myService.vendedor_id" [(ngModel)]="myService.vendedor_id"></ion-input>
+      </ion-item>
+      <br/> <br/> <br/> <br/>
+      <ion-row style="text-align:center;">
+        <button style="position: relative;left: 50%;top: 65%;transform: translate(-50%,-50%);font-size: 48px; background-color: #555555; padding: 10px 24px;" class ="button_login" primary block  (click)="search()">Entrar</button>
+      </ion-row>
+      <br/> <br/>
+      <div *ngIf="myValue">
+        <ion-row>
+          <h2 style="position: relative;left: 50%;top: 65%;transform: translate(-50%,-50%);">Id inválido.</h2>
+        </ion-row>
+      </div>
+    </ion-list>
+
+
+
+</ion-content>
