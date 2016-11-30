@@ -5,7 +5,8 @@ import { MenuPage } from '../pages/menu/menu';
 import { HomePage } from '../pages/home/home';
 import { TabsPage} from "../pages/tabs/tabs";
 import { LoginPage } from "../pages/login/login";
-import {GlobalService} from "./GlobalService";
+import { GlobalService } from "./GlobalService";
+import { DistrictPage } from "../pages/district/district";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {GlobalService} from "./GlobalService";
     MenuPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    DistrictPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -25,7 +27,8 @@ import {GlobalService} from "./GlobalService";
     MenuPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    DistrictPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GlobalService]
 })

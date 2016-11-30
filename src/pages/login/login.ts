@@ -7,7 +7,7 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Component} from "@angular/core";
 import {ExisteVendedorService} from './ExisteVendedorService';
-import {HomePage} from "../home/home";
+import {TabsPage} from "../tabs/tabs";
 import {GlobalService} from "../../app/GlobalService";
 
 @Component({
@@ -23,7 +23,7 @@ export class LoginPage {
   //vendedor_id: any;
   myValue: boolean;
 
-  constructor(public navCtrl: NavController, private ovService: ExisteVendedorService, private myService: GlobalService){
+  constructor(public navCtrl: NavController, private checkService: ExisteVendedorService, private myService: GlobalService){
 
     this.myValue= false;
     //this.vendedor_id = 1;
@@ -31,17 +31,17 @@ export class LoginPage {
   }
 
   search() {
-    this.ovService.checkExisteVendedor(this.myService.vendedor_id).subscribe(
+    this.checkService.checkExisteVendedor(this.myService.vendedor_id).subscribe(
       data => {
         this.exists = data;
         console.log("Exists : " + this.exists);
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(TabsPage);
       },
       err => {
         console.log(err);
         this.myValue = true;
       },
-      () => console.log('OpVenda Search Complete')
+      () => console.log('checkExist Search Complete')
     );
 
   }

@@ -26,7 +26,7 @@ export class HomePage {
 
   search() {
     console.log(this.vendedor_id);
-      this.ovService.searchOpVenda(this.vendedor_id).subscribe(
+      this.ovService.searchOpVenda(this.myService.vendedor_id).subscribe(
         data => {
           this.OVList = data;
           console.log(this.OVList);
