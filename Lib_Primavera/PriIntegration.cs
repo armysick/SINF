@@ -299,7 +299,7 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT ID, Entidade, CabecOportunidadesVenda.Vendedor, BarraPercentual FROM CabecOportunidadesVenda JOIN Clientes ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE CabecOportunidadesVenda.Vendedor = "+vendedor_id+" AND Clientes.Distrito = "+distrito_id+"; ");
+                objList = PriEngine.Engine.Consulta("SELECT ID, Entidade, CabecOportunidadesVenda.Descricao, CabecOportunidadesVenda.Vendedor, BarraPercentual FROM CabecOportunidadesVenda JOIN Clientes ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE CabecOportunidadesVenda.Vendedor = "+vendedor_id+" AND Clientes.Distrito = "+distrito_id+"; ");
 
 
                 while (!objList.NoFim())
@@ -310,6 +310,7 @@ namespace FirstREST.Lib_Primavera
                         Entidade = objList.Valor("Entidade"),
                         Vendedor = objList.Valor("Vendedor"),
                         BarraPercentual = objList.Valor("BarraPercentual"),
+                        Descricao = objList.Valor("Descricao")
                     });
                     objList.Seguinte();
 
@@ -505,10 +506,10 @@ namespace FirstREST.Lib_Primavera
 
 
         #region Distrito
-        public static Lib_Primavera.Model.Distrito GetDescricaoDistrito(string code)
+        public static List<Model.Distrito> GetDescricaoDistrito(string code)
         {
             StdBELista objList;
-            Model.Distrito myDistrito = new Model.Distrito();
+            List<Model.Distrito> myDistrito = new List<Model.Distrito>();//HERE
 
             try
             {
@@ -516,7 +517,10 @@ namespace FirstREST.Lib_Primavera
                 if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
                 {
                     objList = PriEngine.Engine.Consulta("SELECT Descricao from Distritos WHERE Distrito = '" + code + "'");
-                    myDistrito.Descricao = objList.Valor("Descricao");
+                    myDistrito.Add(new Model.Distrito
+                    {
+                        Descricao = objList.Valor("Descricao")
+                    });
                     return myDistrito;
                 }
                 else
