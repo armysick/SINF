@@ -2,12 +2,14 @@
  * Created by user on 30-11-2016.
  */
 
-import { NavController } from 'ionic-angular';
+import { NavController, Modal } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import {Component} from "@angular/core";
 import {GlobalService} from "../../app/GlobalService";
 import {Events} from 'ionic-angular';
 import {OpVendaByDistritoService} from "./OpVendaByDistritoService";
+import { ModalController } from 'ionic-angular';
+import { ModalPage } from '../modal-page/modal';
 
 @Component({
   selector: 'page-district',
@@ -21,9 +23,13 @@ export class DistrictPage {
   currentDistrict: number;
   OVList: any;
   DNameList: any;
-  constructor(public navCtrl: NavController, private myService: GlobalService, private ovdService: OpVendaByDistritoService, private events: Events){
+  constructor(public navCtrl: NavController, private myService: GlobalService, private ovdService: OpVendaByDistritoService, private events: Events, private modalCtrl: ModalController){
     this.currentDistrict = 12;
-    this.search();
+    if(myService.iddistrito == this.currentDistrict){
+      this.search();
+    }
+
+
 
     this.events.subscribe('testDistrictChange',() => {
       if(myService.iddistrito != this.currentDistrict){
@@ -31,6 +37,14 @@ export class DistrictPage {
         this.search();
       }
     });
+
+  }
+
+
+  openModal(characterNum) {
+
+    let modal = this.modalCtrl.create(ModalPage, characterNum);
+    modal.present();
 
   }
 
@@ -50,7 +64,7 @@ export class DistrictPage {
     this.ovdService.searchDistName(this.currentDistrict).subscribe(
       data2 => {
         this.DNameList = data2;
-        console.log("data; -> " + data2.Descricao);
+        //console.log("data; -> " + data2.Descricao);
         console.log("DNAMELIST: " + this.DNameList);
       },
       err => {

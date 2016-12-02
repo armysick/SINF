@@ -28,74 +28,163 @@
     <ion-list>
       <ion-row>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search1()"> Aveiro </button>
+          <div *ngIf="myService.iddistrito == 1">
+          <button ion-button color="secondary" primary block  (click)="search1()"> Aveiro </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 1">
+            <button ion-button color="light" primary block  (click)="search1()"> Aveiro </button>
+          </div>
         </ion-col>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search2()"> Beja </button>
+          <div *ngIf="myService.iddistrito == 2">
+            <button ion-button color="secondary" primary block  (click)="search2()"> Beja </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 2">
+            <button ion-button color="light" primary block  (click)="search2()"> Beja </button>
+          </div>
         </ion-col>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search3()"> Braga </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col width-33 text-center>
-          <button primary block  (click)="search4()"> Bragança </button>
-        </ion-col>
-        <ion-col width-33 text-center>
-          <button primary block  (click)="search5()"> Castelo Branco </button>
-        </ion-col>
-        <ion-col width-33 text-center>
-          <button primary block  (click)="search6()"> Coimbra </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col width-33 text-center>
-          <button primary block  (click)="search7()"> Évora </button>
-        </ion-col>
-        <ion-col width-33 text-center>
-          <button primary block  (click)="search8()"> Faro </button>
-        </ion-col>
-        <ion-col width-33 text-center>
-          <button primary block  (click)="search9()"> Guarda </button>
+          <div *ngIf="myService.iddistrito == 3">
+            <button ion-button color="secondary" primary block  (click)="search3()"> Braga </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 3">
+            <button ion-button color="light" primary block  (click)="search3()"> Braga </button>
+          </div>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search10()"> Leiria </button>
+          <div *ngIf="myService.iddistrito == 4">
+            <button ion-button color="secondary" primary block  (click)="search4()"> Bragança </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 4">
+            <button ion-button color="light" primary block  (click)="search4()"> Bragança </button>
+          </div>
         </ion-col>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search11()"> Lisboa </button>
+          <div *ngIf="myService.iddistrito == 5">
+            <button ion-button color="secondary" primary block  (click)="search5()"> Castelo Branco </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 5">
+            <button ion-button color="light" primary block  (click)="search5()"> Castelo Branco </button>
+          </div>
         </ion-col>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search12()"> Portalegre </button>
+          <div *ngIf="myService.iddistrito == 6">
+            <button ion-button color="secondary" primary block  (click)="search6()"> Coimbra </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 6">
+            <button ion-button color="light" primary block  (click)="search6()"> Coimbra </button>
+          </div>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search13()"> Porto </button>
+          <div *ngIf="myService.iddistrito == 7">
+            <button ion-button color="secondary" primary block  (click)="search7()"> Évora </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 7">
+            <button ion-button color="light" primary block  (click)="search7()"> Évora </button>
+          </div>
         </ion-col>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search14()"> Santarém </button>
+          <div *ngIf="myService.iddistrito == 8">
+            <button ion-button color="secondary" primary block  (click)="search8()"> Faro </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 8">
+            <button ion-button color="light" primary block  (click)="search8()"> Faro </button>
+          </div>
         </ion-col>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search15()"> Setúbal </button>
+          <div *ngIf="myService.iddistrito == 9">
+            <button ion-button color="secondary" primary block  (click)="search9()"> Guarda </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 9">
+            <button ion-button color="light" primary block  (click)="search9()"> Guarda </button>
+          </div>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search16()"> Viana do Castelo </button>
+          <div *ngIf="myService.iddistrito == 10">
+            <button ion-button color="secondary" primary block  (click)="search10()"> Leiria </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 10">
+            <button ion-button color="light" primary block  (click)="search10()"> Leiria </button>
+          </div>
         </ion-col>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search17()"> Vila Real </button>
+          <div *ngIf="myService.iddistrito == 11">
+            <button ion-button color="secondary" primary block  (click)="search11()"> Lisboa </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 11">
+            <button ion-button color="light" primary block  (click)="search11()"> Lisboa </button>
+          </div>
         </ion-col>
         <ion-col width-33 text-center>
-          <button primary block  (click)="search18()"> Viseu </button>
+          <div *ngIf="myService.iddistrito == 12">
+            <button ion-button color="secondary" primary block  (click)="search12()"> Portalegre </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 12">
+            <button ion-button color="light" primary block  (click)="search12()"> Portalegre </button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-33 text-center>
+          <div *ngIf="myService.iddistrito == 13">
+            <button ion-button color="secondary" primary block  (click)="search13()"> Porto </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 13">
+            <button ion-button color="light" primary block  (click)="search13()"> Porto </button>
+          </div>
+        </ion-col>
+        <ion-col width-33 text-center>
+          <div *ngIf="myService.iddistrito == 14">
+            <button ion-button color="secondary" primary block  (click)="search14()"> Santarém </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 14">
+            <button ion-button color="light" primary block  (click)="search14()"> Santarém </button>
+          </div>
+        </ion-col>
+        <ion-col width-33 text-center>
+          <div *ngIf="myService.iddistrito == 15">
+            <button ion-button color="secondary" primary block  (click)="search15()"> Setúbal </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 15">
+            <button ion-button color="light" primary block  (click)="search15()"> Setúbal </button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-33 text-center>
+          <div *ngIf="myService.iddistrito == 16">
+            <button ion-button color="secondary" primary block  (click)="search16()"> Viana do Castelo </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 16">
+            <button ion-button color="light" primary block  (click)="search16()"> Viana do Castelo </button>
+          </div>
+        </ion-col>
+        <ion-col width-33 text-center>
+          <div *ngIf="myService.iddistrito == 17">
+            <button ion-button color="secondary" primary block  (click)="search17()"> Vila Real </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 17">
+            <button ion-button color="light" primary block  (click)="search17()"> Vila Real </button>
+          </div>
+        </ion-col>
+        <ion-col width-33 text-center>
+          <div *ngIf="myService.iddistrito == 18">
+            <button ion-button color="secondary" primary block  (click)="search18()"> Viseu </button>
+          </div>
+          <div *ngIf="myService.iddistrito != 18">
+            <button ion-button color="light" primary block  (click)="search18()"> Viseu </button>
+          </div>
         </ion-col>
       </ion-row>
     </ion-list>
   </div>
 
-  <!-- TODO Viajar para Distrito
   <!-- TODO Modal ionic 2 Component [INSERIR NOVA OPV] -->
 
 </ion-content>

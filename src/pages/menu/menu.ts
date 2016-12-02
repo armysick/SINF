@@ -15,9 +15,11 @@ export class MenuPage {
   OVList: any;
   myValue: boolean;
   myDistList: boolean;
+  start: number;
   constructor(public navCtrl: NavController, private myService: GlobalService, private ovService: OpVendaService, private events: Events) {
     this.myValue=false;
     this.myDistList = false;
+    this.start=2;
 
   }
 
@@ -50,6 +52,7 @@ export class MenuPage {
   }
   search2(){
     this.myService.iddistrito = 2;
+    this.start = 1;
   }
   search3(){
     this.myService.iddistrito = 3;
