@@ -31,7 +31,13 @@ export class OpVendaByDistritoService {
     })
     console.log("opt" + opt.headers);
 
-    var url = 'http://localhost:49822/api/OpVendas/'+ vid +'?dis_id=' + did;
+    var didstring;
+    if(did < 10){
+      didstring = "0"+did;
+    }
+    else
+      didstring = did;
+    var url = 'http://localhost:49822/api/OpVendas/'+ vid +'?dis_id=' + didstring;
     var response = this.http.get(url,opt).map(res => res.json());
 
     return response;
@@ -51,7 +57,14 @@ export class OpVendaByDistritoService {
     })
     console.log("opt" + opt.headers);
 
-    var url = 'http://localhost:49822/api/Distritos/'+ did;
+    var didstring;
+    if(did < 10){
+      didstring = "0"+did;
+    }
+    else
+      didstring = did;
+
+    var url = 'http://localhost:49822/api/Distritos/'+ didstring;
     var response = this.http.get(url,opt).map(res => res.json());
 
     return response;
