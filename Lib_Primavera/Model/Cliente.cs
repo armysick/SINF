@@ -57,6 +57,12 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+        public string TotDeb
+        {
+            get;
+            set;
+        }
+
         /*public string Lead
         {
             get;

@@ -23,6 +23,8 @@ export class DistrictPage {
   currentDistrict: number;
   OVList: any;
   DNameList: any;
+  distrito: string;
+
   constructor(public navCtrl: NavController, private myService: GlobalService, private ovdService: OpVendaByDistritoService, private events: Events, private modalCtrl: ModalController){
     this.currentDistrict = 12;
     if(myService.iddistrito == this.currentDistrict){
@@ -64,7 +66,8 @@ export class DistrictPage {
     this.ovdService.searchDistName(this.currentDistrict).subscribe(
       data2 => {
         this.DNameList = data2;
-        //console.log("data; -> " + data2.Descricao);
+        for(let DName of this.DNameList)
+          this.distrito = DName.Descricao;
         console.log("DNAMELIST: " + this.DNameList);
       },
       err => {

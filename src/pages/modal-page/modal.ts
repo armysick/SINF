@@ -9,14 +9,24 @@ import { Platform, NavParams, ViewController } from 'ionic-angular';
   templateUrl: 'modal.html'
 })
 export class ModalPage {
-  character;
-
+  Cliente;
+  OPV;
   constructor(
     public platform: Platform,
     public params: NavParams,
     public navCtrl: ViewController
   ) {
-    var characters = [
+    this.OPV = this.params.get('any');
+
+    this.Cliente =
+      {
+        NomeCliente: "JZABRNSICK",
+        Morada: "Rua Zé Colmeia, 420-69",
+        TotDeb: "1337"
+      };
+
+    //console.log("OPV: " + this.OPV.ID);
+    /**var characters = [
       {
         name: 'Gollum',
         quote: 'Sneaky little hobbitses!',
@@ -48,7 +58,7 @@ export class ModalPage {
         ]
       }
     ];
-    this.character = characters[this.params.get('charNum')];
+    this.character = characters[this.params.get('charNum')];*/
   }
 
   dismiss() {

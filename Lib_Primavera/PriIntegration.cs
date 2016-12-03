@@ -77,6 +77,9 @@ namespace FirstREST.Lib_Primavera
                     myCli.NumContribuinte = objCli.get_NumContribuinte();
                     myCli.Morada = objCli.get_Morada();
                     myCli.Distrito = objCli.get_Distrito();
+                    double totsdebs = objCli.get_DebitoContaCorrente() + objCli.get_DebitoEncomendasPendentes();
+                    myCli.TotDeb = totsdebs.ToString("F2");
+                    
                     return myCli;
                 }
                 else

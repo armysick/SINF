@@ -1,22 +1,22 @@
 <ion-content>
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Description
-    </ion-title>
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span color="primary" showWhen="ios">Cancel</span>
-        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Página da Oportunidade de Venda
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <span color="primary" showWhen="ios">Cancel</span>
+          <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
   <ion-list>
-    <ion-item>
-      <!--<ion-avatar item-left>
+    <!--<ion-item>
+      <ion-avatar item-left>
         <img src="{{character.image}}">
-      </ion-avatar>-->
+      </ion-avatar>
       <h2>{{character.name}}</h2>
       <p>{{character.quote}}</p>
     </ion-item>
@@ -25,6 +25,27 @@
       <ion-note item-right>
         {{item.note}}
       </ion-note>
+    </ion-item>-->
+    <ion-item>
+      <!-- empty -->
+    </ion-item>
+    <ion-item>
+      Cliente: {{Cliente.NomeCliente}}
+    </ion-item>
+    <ion-item>
+      Morada: {{Cliente.Morada}}
+    </ion-item>
+    <ion-item>
+      Total em compras: {{Cliente.TotDeb}}
+    </ion-item>
+    <ion-item>
+      Estado: {{OPV.BarraPercentual}}
+    </ion-item>
+    <ion-item>
+      Data de Criação: {{OPV.DataCriacao}}
+    </ion-item>
+    <ion-item>
+      Descrição: {{OPV.Descricao}}
     </ion-item>
   </ion-list>
 </ion-content>
