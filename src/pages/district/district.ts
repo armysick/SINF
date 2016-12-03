@@ -51,7 +51,6 @@ export class DistrictPage {
   }
 
   search(){
-    console.log(this.currentDistrict);
     this.ovdService.searchOpVenda(this.myService.vendedor_id, this.currentDistrict).subscribe(
       data => {
         this.OVList = data;

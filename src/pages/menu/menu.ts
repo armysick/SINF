@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import {GlobalService} from "../../app/GlobalService";
 import {OpVendaService} from "./OpVendaService";
 import {Events} from 'ionic-angular';
+import {ModalOPVPage} from '../modal-opv-page/opvmodal'
 
 @Component({
   selector: 'page-menu',
@@ -16,7 +17,7 @@ export class MenuPage {
   myValue: boolean;
   myDistList: boolean;
   start: number;
-  constructor(public navCtrl: NavController, private myService: GlobalService, private ovService: OpVendaService, private events: Events) {
+  constructor(public navCtrl: NavController, private myService: GlobalService, private ovService: OpVendaService, private events: Events, private modalCtrl: ModalController) {
     this.myValue=false;
     this.myDistList = false;
     this.start=2;
@@ -103,4 +104,8 @@ export class MenuPage {
     this.myService.iddistrito = 18;
   }
 
+  openOPVModal(){
+    let modal = this.modalCtrl.create(ModalOPVPage);
+    modal.present();
+  }
 }

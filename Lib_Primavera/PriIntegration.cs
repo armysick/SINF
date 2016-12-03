@@ -51,7 +51,7 @@ namespace FirstREST.Lib_Primavera
 
                 }
 
-                return listClientes;
+                return listClientes.OrderBy(x => x.CodCliente).ToList();
             }
             else
                 return null;

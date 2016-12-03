@@ -1,0 +1,48 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Página da Oportunidade de Venda
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <span color="primary" showWhen="ios">Cancel</span>
+          <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>
+    <ion-item>
+      <!-- EMPTY SPACING -->
+      <br>
+      <br>
+      <br>
+    </ion-item>
+
+
+    <ion-row>
+      <ion-item>
+        <ion-label>Selecione o cliente: </ion-label>
+        <ion-select [(ngModel)]="selectedcodcli" >
+          <ion-option *ngFor="let Cli of clis">{{Cli.CodCliente}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+  </ion-list>
+
+  <ion-row>
+    <ion-item>
+      <ion-label stacked><h1>Introduza a descrição da OPV: </h1> </ion-label>
+      <ion-input [value]="descri" [(ngModel)]="descri" ></ion-input>
+    </ion-item>
+  </ion-row>
+  <ion-row>
+    <ion-col width-33></ion-col>
+    <ion-col width-33></ion-col>
+    <ion-col width-33>
+      <button ion-button (click)="registarNovaVenda()">Submeter</button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

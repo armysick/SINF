@@ -8,6 +8,7 @@ import { LoginPage } from "../pages/login/login";
 import { GlobalService } from "./GlobalService";
 import { DistrictPage } from "../pages/district/district";
 import { ModalPage } from "../pages/modal-page/modal";
+import {ModalOPVPage} from "../pages/modal-opv-page/opvmodal";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ModalPage } from "../pages/modal-page/modal";
     TabsPage,
     LoginPage,
     DistrictPage,
-    ModalPage
+    ModalPage,
+    ModalOPVPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -31,7 +33,8 @@ import { ModalPage } from "../pages/modal-page/modal";
     TabsPage,
     LoginPage,
     DistrictPage,
-    ModalPage
+    ModalPage,
+    ModalOPVPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GlobalService]
 })
