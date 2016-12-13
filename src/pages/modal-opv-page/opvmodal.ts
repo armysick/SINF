@@ -48,7 +48,6 @@ export class ModalOPVPage {
       this.cliService.searchCliEspecifico(this.selectedcodcli).subscribe(
         data2 => {
           this.infoselectedcli = data2;
-          //TODO cliService.getUltimoOpv()
           var body = {
             "Entidade": this.infoselectedcli.CodCliente,
             "Vendedor": this.myService.vendedor_id,
@@ -67,6 +66,7 @@ export class ModalOPVPage {
           this.cliService.insertOpVenda(body).subscribe(
             data3 => {
               var resposta = data3;
+              this.dismiss();
             },
             err3 => {
               console.log(err3);

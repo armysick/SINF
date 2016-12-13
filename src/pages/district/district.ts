@@ -54,7 +54,6 @@ export class DistrictPage {
     this.ovdService.searchOpVenda(this.myService.vendedor_id, this.currentDistrict).subscribe(
       data => {
         this.OVList = data;
-        console.log("this OVList: " + this.OVList);
       },
       err => {
         console.log(err);
@@ -67,7 +66,6 @@ export class DistrictPage {
         this.DNameList = data2;
         for(let DName of this.DNameList)
           this.distrito = DName.Descricao;
-        console.log("DNAMELIST: " + this.DNameList);
       },
       err => {
         console.log(err);

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
       Menu
     </ion-title>
@@ -9,7 +9,7 @@
 <ion-content padding>
 
   <ion-list>
-    <button ion-button primary block  (click)="search()">Listar as minhas Oportunidades de Venda</button>
+    <button ion-button color="gray" block  (click)="search()">Listar as minhas Oportunidades de Venda</button>
   </ion-list>
 
   <div *ngIf="myValue">
@@ -22,7 +22,7 @@
   </div>
 
   <ion-list>
-    <button ion-button primary block  (click)="search0()">Listar os Distritos para onde posso viajar</button>
+    <button ion-button color="gray" block  (click)="search0()">Listar os Distritos para onde posso viajar</button>
   </ion-list>
   <div *ngIf="myDistList">
     <ion-list>
@@ -191,7 +191,7 @@
   </div>
 
   <ion-list>
-     <button ion-button primary block  (click)="search0()">Listar Faturas/Vendas Anteriores (TODO)</button> <!-- TODO search(0) para searchFatura -->
+     <button ion-button color="gray" block  (click)="search0()">Listar Faturas/Vendas Anteriores (TODO)</button> <!-- TODO search(0) para searchFatura -->
   </ion-list>
 
   <!-- [INSERIR NOVA OPV] -->

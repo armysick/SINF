@@ -6,7 +6,7 @@
       </ion-title>
       <ion-buttons start>
         <button ion-button (click)="dismiss()">
-          <span color="primary" showWhen="ios">Cancel</span>
+          <span color="danger" showWhen="ios">Cancel</span>
           <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
         </button>
       </ion-buttons>
@@ -34,7 +34,7 @@
   <ion-row>
     <ion-item>
       <ion-label stacked><h1>Introduza a descrição da OPV: </h1> </ion-label>
-      <ion-input [value]="descri" [(ngModel)]="descri" ></ion-input>
+      <ion-textarea style="border:1px solid black;" [value]="descri" [(ngModel)]="descri" ></ion-textarea>
     </ion-item>
   </ion-row>
   <ion-row>

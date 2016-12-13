@@ -3,6 +3,7 @@
 @import "ionic.globals";
 
 
+
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -23,11 +24,12 @@ $background-color:  #fff;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #387ef5,
+  primary:    #4033b7,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  gray:       #777777
 );
 
 
@@ -69,3 +71,12 @@ $colors: (
 
 $ionicons-font-path: "../assets/fonts";
 @import "ionicons";
+
+@font-face {
+    font-family: 'monteserrat';
+    src: url('www/assets/fonts/montserrat/Montserrat-Light.otf');
+
+    font-weight: normal;
+    font-style: normal;
+}
+

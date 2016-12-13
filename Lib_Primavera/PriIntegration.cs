@@ -221,6 +221,7 @@ namespace FirstREST.Lib_Primavera
                     myCli.set_NumContribuinte(cli.NumContribuinte);
                     myCli.set_Moeda(cli.Moeda);
                     myCli.set_Morada(cli.Morada);
+                    myCli.set_Distrito(cli.Distrito);
 
                     PriEngine.Engine.Comercial.Clientes.Actualiza(myCli);
 
@@ -392,8 +393,37 @@ namespace FirstREST.Lib_Primavera
             {
                 if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
                 {
+
+                    // TESTE
+                    StdBELista objList;
+                    List<Model.OpVenda> listOpVendas = new List<Model.OpVenda>();
+
+                    objList = PriEngine.Engine.Consulta("SELECT Oportunidade FROM CabecOportunidadesVenda");
+                    String strop = "OPV000";
+                    while (!objList.NoFim())
+                    {
+
+                        erro.Erro = 1;
+                        strop = objList.Valor("Oportunidade");
+
+                        objList.Seguinte();
+                    }
+
+                    strop = strop.Substring(3);  // get XXX from [OPV]XXX
+                    int intop = Int32.Parse(strop);
+                    intop++;
+                    strop = Convert.ToString(intop);
+                    if (intop.ToString().Length == 1)
+                        strop = "OPV00" + strop;
+                    else if (intop.ToString().Length == 2)
+                        strop = "OPV0" + strop;
+                    else
+                        strop = "OPV" + strop;
+                    // END TESTES
+
+                    
                     myOpVenda.set_ID("");
-                    myOpVenda.set_Oportunidade(opvenda.Oportunidade);
+                    myOpVenda.set_Oportunidade(strop);
                     myOpVenda.set_Entidade(opvenda.Entidade);
                     myOpVenda.set_Vendedor(opvenda.Vendedor);
                     //short bpvalue = 5;

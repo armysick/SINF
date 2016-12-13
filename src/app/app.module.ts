@@ -11,6 +11,7 @@ import { ModalPage } from "../pages/modal-page/modal";
 import {ModalOPVPage} from "../pages/modal-opv-page/opvmodal";
 import {ModalCliPage} from "../pages/modal-cli-page/climodal";
 
+
 @NgModule({
   declarations: [
     MyApp,

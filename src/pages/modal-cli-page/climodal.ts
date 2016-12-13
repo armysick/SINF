@@ -18,14 +18,14 @@ export class ModalCliPage {
     morada: any;
     distrito: any;
     contribuinte: any;
+    myValue: boolean;
   constructor(
     public platform: Platform,
     public params: NavParams,
     public navCtrl: ViewController,
     private cliService : InserirClienteService,
-
   ) {
-
+    this.myValue = false;
   }
 
   registarNovoCliente(){
@@ -33,9 +33,9 @@ export class ModalCliPage {
     console.log("A DATA É: " + dt);
 
         var body = {
-          "NomeCliente": this.nome,
-          "CodCliente": this.codigo, //TODO checkar este codigo
           "Morada": this.morada,
+          "CodCliente": this.codigo,
+          "NomeCliente": this.nome,
           "NumContribuinte": this.contribuinte,
           "Moeda": "EUR",
           "Distrito": this.distrito,
@@ -45,9 +45,12 @@ export class ModalCliPage {
         this.cliService.insertCliente(body).subscribe(
           data3 => {
             var resposta = data3;
+            this.dismiss();
           },
           err3 => {
-            console.log(err3);
+            console.log(err3._body  );
+            if(err3._body = "O cliente já existe")
+              this.myValue = true;
           },
           () => console.log('Insert COMPLETE')
         );
