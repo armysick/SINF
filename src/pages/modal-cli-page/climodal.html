@@ -1,0 +1,61 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Página de Inserção de Cliente
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <span color="primary" showWhen="ios">Cancel</span>
+          <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-item>
+    <!-- EMPTY SPACING -->
+    <br>
+    <br>
+    <br>
+  </ion-item>
+  <ion-row>
+    <ion-item>
+      <ion-label stacked><h1>Introduza o código do cliente (must be unique): </h1> </ion-label>
+      <ion-input [value]="codigo" [(ngModel)]="codigo" ></ion-input>
+    </ion-item>
+  </ion-row>
+  <ion-row>
+    <ion-item>
+      <ion-label stacked><h1>Introduza o nome do cliente: </h1> </ion-label>
+      <ion-input [value]="nome" [(ngModel)]="nome" ></ion-input>
+    </ion-item>
+  </ion-row>
+  <ion-row>
+    <ion-item>
+      <ion-label stacked><h1>Introduza a morada: </h1> </ion-label>
+      <ion-input [value]="morada" [(ngModel)]="morada" ></ion-input>
+    </ion-item>
+  </ion-row>
+  <ion-row>
+    <ion-item>
+      <ion-label stacked><h1>Introduza o Distrito: </h1> </ion-label>
+      <ion-input [value]="distrito" [(ngModel)]="distrito" ></ion-input>
+    </ion-item>
+  </ion-row>
+  <ion-row>
+    <ion-item>
+      <ion-label stacked><h1>Introduza o numero de contribuinte: </h1> </ion-label>
+      <ion-input [value]="contribuinte" [(ngModel)]="contribuinte" ></ion-input>
+    </ion-item>
+  </ion-row>
+  <ion-row>
+    <ion-col width-33></ion-col>
+    <ion-col width-33></ion-col>
+    <ion-col width-33>
+      <button ion-button (click)="registarNovoCliente()">Submeter</button>
+    </ion-col>
+  </ion-row>
+
+
+
+</ion-content>

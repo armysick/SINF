@@ -99,5 +99,10 @@ namespace FirstREST.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, erro.Descricao);
             }
         }
+
+        public Lib_Primavera.Model.RespostaErro Get()
+        {
+            return Lib_Primavera.PriIntegration.lastOpVenda();
+        }
     }
 }

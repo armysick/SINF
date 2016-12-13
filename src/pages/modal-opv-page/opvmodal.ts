@@ -7,12 +7,6 @@ import { Platform, NavParams, ViewController } from 'ionic-angular';
 import {GlobalService} from "../../app/GlobalService";
 import {GetClientesService} from "./GetClientesService";
 
-
-
-
-
-
-
 @Component({
   templateUrl: 'opvmodal.html',
   providers: [GetClientesService]
@@ -64,8 +58,8 @@ export class ModalOPVPage {
             "CicloVenda": "CV_SOFT",
             "TipoEntidade": "C",
             "DataCriacao": dt,
-            "DataExpiracao": "2016-12-03T21:55:44.5807972+00:00",
-            "Oportunidade": "OPV005",
+            "DataExpiracao": "2016-12-15T21:55:44.5807972+00:00",
+            "Oportunidade": "OPV006",
             "Distrito": this.infoselectedcli.Distrito
 
           }

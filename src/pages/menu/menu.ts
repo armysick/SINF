@@ -5,6 +5,7 @@ import {GlobalService} from "../../app/GlobalService";
 import {OpVendaService} from "./OpVendaService";
 import {Events} from 'ionic-angular';
 import {ModalOPVPage} from '../modal-opv-page/opvmodal'
+import {ModalCliPage} from '../modal-cli-page/climodal'
 
 @Component({
   selector: 'page-menu',
@@ -107,5 +108,10 @@ export class MenuPage {
   openOPVModal(){
     let modal = this.modalCtrl.create(ModalOPVPage);
     modal.present();
+  }
+
+  openCliModal() {
+    let modal2 = this.modalCtrl.create(ModalCliPage);
+    modal2.present();
   }
 }

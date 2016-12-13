@@ -207,7 +207,7 @@ namespace FirstREST.Lib_Primavera
                 if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
                 {
 
-                     if (PriEngine.Engine.Comercial.Clientes.Existe(cli.CodCliente) == false)
+                     if (PriEngine.Engine.Comercial.Clientes.Existe(cli.CodCliente) == true)
                     {
                         erro.Erro = 1;
                         erro.Descricao = "O cliente já existe";
@@ -432,6 +432,41 @@ namespace FirstREST.Lib_Primavera
             }
 
 
+        }
+
+        public static Lib_Primavera.Model.RespostaErro lastOpVenda()
+        {
+            Lib_Primavera.Model.RespostaErro erro = new Model.RespostaErro();
+            StdBELista objList;
+            List<Model.OpVenda> listOpVendas = new List<Model.OpVenda>();
+
+            try
+            {
+                if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+                {
+                    objList = PriEngine.Engine.Consulta("SELECT Oportunidade FROM CabecOportunidadesVenda");
+
+                    while (!objList.NoFim())
+                    {
+
+                        erro.Erro = 1;
+                        erro.Descricao = objList.Valor("Oportunidade");
+
+                        objList.Seguinte();
+                    }
+                    return erro;
+                }
+                else
+                {
+                    erro.Erro = 1;
+                    erro.Descricao = "Erro ao abrir empresa";
+                    return erro;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
 
