@@ -327,6 +327,7 @@ namespace FirstREST.Lib_Primavera
                 return null;
         }
 
+        
         public static Lib_Primavera.Model.RespostaErro UpdOpVenda(Lib_Primavera.Model.OpVenda opvenda)
         {
             Lib_Primavera.Model.RespostaErro erro = new Model.RespostaErro();
@@ -578,7 +579,7 @@ namespace FirstREST.Lib_Primavera
         public static List<Model.Distrito> GetDescricaoDistrito(string code)
         {
             StdBELista objList;
-            List<Model.Distrito> myDistrito = new List<Model.Distrito>();//HERE
+            List<Model.Distrito> myDistrito = new List<Model.Distrito>();
 
             try
             {
@@ -608,6 +609,115 @@ namespace FirstREST.Lib_Primavera
 
         }
 
+        public static List<Model.Distrito> GetSuggestedDistricts(string vid)
+        {
+            StdBELista objList;
+            List<Model.Distrito> myDistrito = new List<Model.Distrito>();
+
+            try
+            {
+
+                if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+                {
+                    int code = 1;
+                    double valor1 = -1;
+                    double valor2 = -1;
+                    int did1 = -1;
+                    int did2 = -1;
+                    String descri1 = null;
+                    String descri2 = null;
+                    double totaldeb = 0;
+                    double LP = 0;
+                    double size = 0;
+                    double rating = 0;
+                    String descri;
+
+                    while (code <= 18)
+                    {
+                        objList = PriEngine.Engine.Consulta("SELECT Distritos.Distrito, Distritos.Descricao,  CabecOportunidadesVenda.BarraPercentual, Clientes.TotalDeb FROM Distritos JOIN Clientes on Distritos.Distrito = Clientes.Distrito JOIN CabecOportunidadesVenda ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE Distritos.Distrito = "+code+" AND (SELECT COUNT(Distritos.Distrito) FROM Distritos JOIN Clientes on Distritos.Distrito = Clientes.Distrito JOIN CabecOportunidadesVenda ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE Distritos.Distrito = "+code+") > 2");
+                        // Get OPVs from each district
+                        int l = objList.NumLinhas();
+                        if (l > 0)
+                        {
+                            descri = objList.Valor("Descricao");
+                            rating = 0;
+                            LP = 0;
+                            totaldeb = 0;
+                            size = objList.NumLinhas();
+                            while (!objList.NoFim())
+                            {
+                                totaldeb += objList.Valor("TotalDeb");
+                                LP = objList.Valor("BarraPercentual");
+                                objList.Seguinte();
+                            }
+                            totaldeb = totaldeb / size;
+
+                            if (totaldeb < 1000)
+                                totaldeb = totaldeb / 1000;
+                            else if (totaldeb >= 1000)
+                                totaldeb = 1;
+
+                            LP = LP / size;
+
+
+                            LP = LP / 100;
+
+                            if (5 > size)
+                                size = 0;
+                            if (10 > size)
+                                size = 0.5;
+                            else if (size >= 10)
+                                size = 1;
+
+                            rating = (0.2 * totaldeb) + (0.5 * LP) + (0.3 * size);
+
+                            if (rating > valor1)
+                            {
+                                valor2 = valor1;
+                                did2 = did1;
+                                descri2 = descri1;
+                                valor1 = rating;
+                                did1 = code;
+                                descri1 = descri;
+                            }
+                            else if (rating > valor2)
+                            {
+                                valor2 = rating;
+                                did2 = code;
+                                descri2 = descri;
+                            }
+
+                        }
+                        code++;
+
+                    }
+                    if(did1!=-1){
+                        myDistrito.Add(new Model.Distrito
+                        {
+                            ID = did1,
+                            Descricao = descri1
+                        });
+                        if(did2!=-1){
+                            myDistrito.Add(new Model.Distrito
+                            {
+                                ID = did2,
+                                Descricao = descri2
+                            });
+                        }
+                    }
+                    return myDistrito;
+                }
+                else
+                {
+
+                    return null;
+                }
+            }
+            catch (Exception exc)
+            {
+                return null;
+            }
+        }
         #endregion Distrito   // End Distrito  //
 
         

@@ -54,7 +54,7 @@ export class ModalOPVPage {
             "BarraPercentual": 5,
             "Descricao": this.descri,
             "Moeda": "EUR",
-            "CicloVenda": "CV_SOFT",
+            "CicloVenda": "CV_DEF",
             "TipoEntidade": "C",
             "DataCriacao": dt,
             "DataExpiracao": "2016-12-15T21:55:44.5807972+00:00",

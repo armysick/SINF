@@ -26,5 +26,10 @@ namespace FirstREST.Controllers
         }
 
 
+        public IEnumerable<Lib_Primavera.Model.Distrito> Get2(string vid)
+        {
+            return Lib_Primavera.PriIntegration.GetSuggestedDistricts(vid);
+        }
+
     }
 }
