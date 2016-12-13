@@ -694,13 +694,13 @@ namespace FirstREST.Lib_Primavera
                     if(did1!=-1){
                         myDistrito.Add(new Model.Distrito
                         {
-                            ID = did1,
+                            Rating = valor1,
                             Descricao = descri1
                         });
                         if(did2!=-1){
                             myDistrito.Add(new Model.Distrito
                             {
-                                ID = did2,
+                                Rating = valor2,
                                 Descricao = descri2
                             });
                         }

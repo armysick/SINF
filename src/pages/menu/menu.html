@@ -1,25 +1,35 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar style="text-align : center;" color="primary">
     <ion-title>
       Menu
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding style="background-color: #EFFFFD;">
+  <ion-item padding style="background-color: #EFFFFD; ">
+    <ion-list-header  style="font: 100% Helvetica, sans-serif; font-weight: bold; text-align:center; background-color: #EFFFFD;" >
+      As minhas listas
+    </ion-list-header>
+  </ion-item>
 
   <ion-list>
-    <button ion-button color="gray" block  (click)="search()">Listar as minhas Oportunidades de Venda</button>
+    <button ion-button style="font-weight:bold; font-size: 16px;"color="gray" block  (click)="search()">Oportunidades de Venda</button>
   </ion-list>
 
-  <div *ngIf="myValue">
-    <ion-list>
-      <ion-item *ngFor="let OVs of OVList">
-        <p>{{OVs.Entidade}} || {{OVs.Descricao}}</p>
-        <p>{{OVs.BarraPercentual}}</p>
+
+  <ion-item *ngIf="myValue" style="background-color: #EFFFFD;">
+    <ion-list  >
+      <ion-item *ngFor="let OVs of OVList" style="background-color: #EFFFFD;" >
+
+        <ion-item color="primary"><ion-icon name="person"></ion-icon>{{OVs.Entidade}}</ion-item>
+        <ion-item> {{OVs.Descricao}}</ion-item>
+
+        <ion-item>{{OVs.BarraPercentual}}</ion-item>
+
       </ion-item>
     </ion-list>
-  </div>
+  </ion-item>
 
   <ion-list>
     <button ion-button color="gray" block  (click)="search0()">Listar os Distritos para onde posso viajar</button>
@@ -196,10 +206,7 @@
 
   <!-- [INSERIR NOVA OPV] -->
 
-  <ion-row>
-    <ion-item>
-    </ion-item>
-  </ion-row>
+
   <a ion-item color="dark" (click)="openOPVModal()">
     Inserir nova Oportunidade de Venda
   </a>

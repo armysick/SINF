@@ -6,4 +6,21 @@
 
 <ion-content padding>
   <h2>Welcome to Sales Force App!</h2>
+
+  <ion-list>
+    <div *ngIf="myValue1">
+      <ion-row>
+        <ion-item>
+          <ion-label *ngIf="myValue1">{{Dis1}}   ||   {{Rat1}} / 5</ion-label>
+        </ion-item>
+      </ion-row>
+    </div>
+    <div *ngIf="myValue2">
+      <ion-row>
+        <ion-item>
+          <ion-label>{{Dis2}}   ||    {{Rat2}}/5</ion-label>
+        </ion-item>
+      </ion-row>
+    </div>
+  </ion-list>
 </ion-content>
