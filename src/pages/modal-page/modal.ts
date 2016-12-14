@@ -13,6 +13,10 @@ import {getClienteService} from "./getClienteService";
 export class ModalPage {
   Cliente;
   OPV;
+  Articles;
+  selectedarticle;
+  selectedarticleid;
+  selectedarticleprice;
   constructor(
     public platform: Platform,
     public params: NavParams,
@@ -47,10 +51,54 @@ export class ModalPage {
     );
 
 
+      // LOAD ARTICLEs
+    this.getCliSer.getArtigos().subscribe(
+      data3 => {
+        // SUCCESS ON SEARCH
+        this.Articles = data3;
+      },
+      err3 => {
+        console.log(err3);
+      },
+      () => console.log('getArtigos Search Complete')
+    );
 
 
   }
 
+  SalesOrder(){
+    for(var i in this.Articles){
+      if(this.Articles[i].DescArtigo == this.selectedarticle ){
+        this.selectedarticleid = this.Articles[i].CodArtigo;
+        this.selectedarticleprice = this.Articles[i].Price;
+        break;
+      }
+    }
+
+    var body = {
+      "Entidade": this.OPV.Entidade,
+      "LinhasDoc": [
+        {
+          "CodArtigo": this.selectedarticleid,
+          "Quantidade": 1,
+          "PrecoUnitario": this.selectedarticleprice
+        }
+      ]
+    }
+
+    this.getCliSer.insertSalesOrder(body).subscribe(
+      data4 => {
+        var resposta = data4;
+        this.dismiss();
+      },
+      err4 => {
+        console.log(err4);
+      },
+      () => console.log('Insert Sales Order COMPLETE')
+    );
+
+
+  }
   dismiss() {
     this.navCtrl.dismiss();
   }

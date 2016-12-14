@@ -7,6 +7,7 @@ namespace FirstREST.Lib_Primavera.Model
 {
     public class Artigo
     {
+        
         public string CodArtigo
         {
             get;
@@ -14,6 +15,11 @@ namespace FirstREST.Lib_Primavera.Model
         }
 
         public string DescArtigo
+        {
+            get;
+            set;
+        }
+        public double Price
         {
             get;
             set;

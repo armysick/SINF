@@ -33,5 +33,14 @@
     <ion-item>
       Descrição: {{OPV.Descricao}}
     </ion-item>
+
+    <ion-item>
+      <ion-label>Selecione o Artigo: </ion-label>
+      <ion-select [(ngModel)]="selectedarticle" >
+        <ion-option *ngFor="let Arti of Articles">{{Arti.DescArtigo}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <button ion-button primary block (click)="SalesOrder()"> Efetuar Venda </button>
   </ion-list>
 </ion-content>

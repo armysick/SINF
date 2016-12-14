@@ -222,6 +222,7 @@ namespace FirstREST.Lib_Primavera
                     myCli.set_Moeda(cli.Moeda);
                     myCli.set_Morada(cli.Morada);
                     myCli.set_Distrito(cli.Distrito);
+                    myCli.set_Pais("PT");
 
                     PriEngine.Engine.Comercial.Clientes.Actualiza(myCli);
 
@@ -542,6 +543,7 @@ namespace FirstREST.Lib_Primavera
         {
                         
             StdBELista objList;
+            StdBELista objList2;
 
             Model.Artigo art = new Model.Artigo();
             List<Model.Artigo> listArts = new List<Model.Artigo>();
@@ -550,16 +552,22 @@ namespace FirstREST.Lib_Primavera
             {
 
                 objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
-
+                
                 while (!objList.NoFim())
                 {
                     art = new Model.Artigo();
                     art.CodArtigo = objList.Valor("artigo");
                     art.DescArtigo = objList.Valor("descricao");
-
+                    objList2 = PriEngine.Engine.Consulta("SELECT PVP1 from ArtigoMoeda WHERE Artigo = '" + art.CodArtigo + "'");
+                    while (!objList2.NoFim())
+                    {
+                        art.Price = objList2.Valor("PVP1");
+                        objList2.Seguinte();
+                    }
                     listArts.Add(art);
                     objList.Seguinte();
                 }
+                
 
                 return listArts;
 
@@ -747,6 +755,10 @@ namespace FirstREST.Lib_Primavera
                     myEnc.set_Serie(dv.Serie);
                     myEnc.set_Tipodoc("FA");
                     myEnc.set_TipoEntidade("C");
+                    myEnc.set_PaisFac("PT");
+                    myEnc.set_Pais("PT");
+                    myEnc.set_CondPag("2");
+                    
                     // Linhas do documento para a lista de linhas
                     lstlindv = dv.LinhasDoc;
                     PriEngine.Engine.Comercial.Vendas.PreencheDadosRelacionados(myEnc);//PreencheDadosRelacionados(myEnc, rl); rl?

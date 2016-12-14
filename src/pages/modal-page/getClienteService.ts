@@ -51,4 +51,44 @@ export class getClienteService {
 
     return response;
   }
+
+  getArtigos(){
+    let opt: RequestOptions
+    let myHeaders: Headers = new Headers;
+    myHeaders.set('Access-Control-Allow-Origin', '*');
+    myHeaders.append('Content-type', 'application/json');
+    myHeaders.append('User', 'user');
+    myHeaders.append('Password', 'Feup2016')
+
+
+    opt = new RequestOptions({
+      headers: myHeaders
+    })
+    console.log("opt" + opt.headers);
+
+    var url = 'http://localhost:49822/api/Artigos';
+    var response = this.http.get(url,opt).map(res => res.json());
+
+    return response;
+  }
+
+  insertSalesOrder(body){
+    let opt: RequestOptions
+    let myHeaders: Headers = new Headers;
+    myHeaders.set('Access-Control-Allow-Origin', '*');
+    myHeaders.append('Content-type', 'application/json');
+    myHeaders.append('User', 'user');
+    myHeaders.append('Password', 'Feup2016')
+
+    opt = new RequestOptions({
+      headers: myHeaders
+    })
+
+
+    var url = 'http://localhost:49822/api/DocVenda';
+    var response = this.http.post(url,body,opt).map(res => res.json());
+
+    console.log("RESPONSE : " + response);
+    return response;
+  }
 }
