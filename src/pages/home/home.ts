@@ -25,6 +25,7 @@ export class HomePage {
   did2: number;
   myValue1: boolean;
   myValue2: boolean;
+  ResumoOVList;
   constructor(public navCtrl: NavController, private myService: GlobalService, private homeService: HomeService){
     this.Dis1 = null;
     this.myValue1 = false;
@@ -54,6 +55,19 @@ export class HomePage {
         console.log(err3);
       },
       () => console.log('Suggest COMPLETE')
+    );
+
+
+
+
+    this.homeService.getResumos(this.myService.vendedor_id).subscribe(
+      data4 => {
+        this.ResumoOVList = data4;
+      },
+      err4 => {
+        console.log(err4);
+      },
+      () => console.log('Get Resumos COMPLETE')
     );
   }
 

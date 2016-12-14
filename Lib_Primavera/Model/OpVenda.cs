@@ -93,6 +93,11 @@ namespace FirstREST.Lib_Primavera.Model
            get;
            set;
        }
+       public string Resumo
+       {
+           get;
+           set;
+       }
 
     }
 }

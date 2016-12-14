@@ -2,6 +2,7 @@
  * Created by user on 12-12-2016.
  */
 import {Component} from '@angular/core';
+import { AlertController } from 'ionic-angular';
 
 import { Platform, NavParams, ViewController } from 'ionic-angular';
 import {GlobalService} from "../../app/GlobalService";
@@ -26,6 +27,7 @@ export class ModalCliPage {
     public params: NavParams,
     public navCtrl: ViewController,
     private cliService : InserirClienteService,
+    public alertCtrl: AlertController
   ) {
     this.myValue = false;
 
@@ -138,7 +140,7 @@ export class ModalCliPage {
           err3 => {
             console.log(err3._body  );
             if(err3._body = "O cliente já existe")
-              this.myValue = true;
+              this.showAlert();
           },
           () => console.log('Insert COMPLETE')
         );
@@ -148,4 +150,13 @@ export class ModalCliPage {
   dismiss() {
     this.navCtrl.dismiss();
   }
+
+  showAlert() {
+  let alert = this.alertCtrl.create({
+    title: 'Utilizador existente!',
+    subTitle: 'O código de utilizador inserido já existe!',
+    buttons: ['OK']
+  });
+  alert.present();
+}
 }

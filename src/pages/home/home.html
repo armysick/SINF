@@ -15,7 +15,7 @@
 
   <ion-list>
     <div *ngIf="myService.iddistrito != did1">
-      <button ion-button color = "light" primary block *ngIf="myValue1" (click)="selectDist1()">{{Dis1}}   ||   {{Rat1}} / 5</button>
+      <button ion-button color = "light" primary block *ngIf="myValue1" (click)="selectDist1()">    {{Dis1}} _______________||_____________ Rating:   {{Rat1}} / 5</button>
     </div>
     <div *ngIf="myService.iddistrito == did1">
       <button ion-button color = "secondary" primary block *ngIf="myValue1" >{{Dis1}}   ||   {{Rat1}} / 5</button>
@@ -26,5 +26,16 @@
     <div *ngIf="myService.iddistrito == did2">
       <button ion-button color = "secondary" primary block *ngIf="myValue2" >{{Dis2}}   ||    {{Rat2}}/5</button>
     </div>
+  </ion-list>
+
+
+  <ion-label>Marcações/Lembretes</ion-label>
+  <ion-list>
+    <ion-list>
+      <ion-item *ngFor="let OVs of ResumoOVList">
+        <ion-label>{{OVs.Entidade}}  ||  {{OVs.Descricao}} ||  {{OVs.Distrito}} </ion-label>
+        <ion-label>Resumo: {{OVs.Resumo}}</ion-label>
+      </ion-item>
+    </ion-list>
   </ion-list>
 </ion-content>

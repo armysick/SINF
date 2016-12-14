@@ -1,6 +1,6 @@
 <ion-content>
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
       <ion-title>
         Página da Oportunidade de Venda
       </ion-title>
@@ -16,31 +16,67 @@
     <ion-item>
     </ion-item>
     <ion-item>
-      Cliente: {{Cliente.NomeCliente}}
+      <a style="color: #007aff">Cliente:</a> <a style="color: #333333;">{{Cliente.NomeCliente}}</a>
     </ion-item>
     <ion-item>
-      Morada: {{Cliente.Morada}}
+      <a style="color: #007aff"> Morada: </a> <a style="color: #333333;">{{Cliente.Morada}} </a>
     </ion-item>
     <ion-item>
-      Total em compras: {{Cliente.TotDeb}}
+      <a style="color: #007aff"> Total em compras:</a> <a style="color: #333333;"> {{Cliente.TotDeb}}</a>
     </ion-item>
     <ion-item>
-      Estado: {{OPV.BarraPercentual}}
+      <a style="color: #007aff">Estado:</a> <a style="color: #333333;"> {{OPV.BarraPercentual}}</a>
     </ion-item>
     <ion-item>
-      Data de Criação: {{OPV.DataCriacao}}
+      <a style="color: #007aff">Data de Criação: </a> <a style="color: #333333;">{{OPV.DataCriacao}}</a>
     </ion-item>
     <ion-item>
-      Descrição: {{OPV.Descricao}}
+      <a style="color: #007aff">Descrição:</a> <a style="color: #333333;"> {{OPV.Descricao}}</a>
     </ion-item>
 
     <ion-item>
-      <ion-label>Selecione o Artigo: </ion-label>
+      <ion-label style="color: #007aff">Selecione o Artigo: </ion-label>
       <ion-select [(ngModel)]="selectedarticle" >
         <ion-option *ngFor="let Arti of Articles">{{Arti.DescArtigo}}</ion-option>
       </ion-select>
     </ion-item>
 
+    <div *ngIf="selectedarticle!= null">
+      <ion-label>{{selectedarticle.Price}}</ion-label>
+    </div>
+
     <button ion-button primary block (click)="SalesOrder()"> Efetuar Venda </button>
+
+
+    <ion-row *ngIf="textboxvalue">
+      <ion-item>
+        <ion-label stacked><h1>Introduza a descrição da OPV: </h1> </ion-label>
+        <ion-textarea style="border:1px solid black;" [value]="OPV.Descricao" [(ngModel)]="OPV.Descricao" ></ion-textarea>
+      </ion-item>
+    </ion-row>
+
+    <ion-row *ngIf="textboxvalue">
+      <ion-item>
+        <ion-label>Selecione o Status do Cliente: </ion-label>
+        <ion-select [(ngModel)]="selectedstatus" >
+          <ion-option>{{Status[0].name}}</ion-option>
+          <ion-option>{{Status[1].name}}</ion-option>
+          <ion-option>{{Status[2].name}}</ion-option>
+          <ion-option>{{Status[3].name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+    <ion-row *ngIf="textboxvalue">
+      <ion-item>
+        <ion-label>Introduza Marcacao</ion-label>
+        <ion-textarea [value]="OPV.Resumo" [(ngModel)]="OPV.Resumo"> </ion-textarea>
+      </ion-item>
+    </ion-row>
+
+
+
+        <button ion-button primary block (click)="terminarVenda()"> Terminar Visita </button>
+
+
   </ion-list>
 </ion-content>

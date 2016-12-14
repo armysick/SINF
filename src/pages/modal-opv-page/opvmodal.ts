@@ -51,7 +51,7 @@ export class ModalOPVPage {
           var body = {
             "Entidade": this.infoselectedcli.CodCliente,
             "Vendedor": this.myService.vendedor_id,
-            "BarraPercentual": 25,
+            "BarraPercentual": 40,
             "Descricao": this.descri,
             "Moeda": "EUR",
             "CicloVenda": "CV_DEF",

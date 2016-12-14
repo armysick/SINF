@@ -292,6 +292,41 @@ namespace FirstREST.Lib_Primavera
                 return null;
         }
 
+        public static List<Model.OpVenda> ListaOpVendasByVendedorWithResumo(string vendedor_id)
+        {
+
+
+            StdBELista objList;
+
+            List<Model.OpVenda> listOpVendas = new List<Model.OpVenda>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
+
+                objList = PriEngine.Engine.Consulta("SELECT Resumo, Distritos.Descricao As DisDescri, Entidade, CabecOportunidadesVenda.Descricao FROM Distritos JOIN Clientes on Distritos.Distrito = Clientes.Distrito JOIN CabecOportunidadesVenda ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE NOT(CabecOportunidadesVenda.Resumo LIKE 'nulo') AND CabecOportunidadesVenda.Vendedor = "+vendedor_id+"");
+
+
+                while (!objList.NoFim())
+                {
+                    listOpVendas.Add(new Model.OpVenda
+                    {
+                        Entidade = objList.Valor("Entidade"),
+                        Distrito = objList.Valor("DisDescri"),
+                        Descricao = objList.Valor("Descricao"),
+                        Resumo = objList.Valor("Resumo")
+                    });
+                    objList.Seguinte();
+
+                }
+
+                return listOpVendas;
+            }
+            else
+                return null;
+        }
+
         public static List<Model.OpVenda> ListaOpVendasByVendedorAndDistrito(string vendedor_id, string distrito_id)
         {
 
@@ -305,19 +340,25 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT ID, Entidade, CabecOportunidadesVenda.Descricao, CabecOportunidadesVenda.Vendedor, BarraPercentual FROM CabecOportunidadesVenda JOIN Clientes ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE CabecOportunidadesVenda.Vendedor = "+vendedor_id+" AND Clientes.Distrito = "+distrito_id+"; ");
+                objList = PriEngine.Engine.Consulta("SELECT ID, CabecOportunidadesVenda.Resumo As CP, Entidade, Oportunidade, CabecOportunidadesVenda.Descricao, CabecOportunidadesVenda.Vendedor, BarraPercentual FROM CabecOportunidadesVenda JOIN Clientes ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE CabecOportunidadesVenda.Vendedor = "+vendedor_id+" AND Clientes.Distrito = "+distrito_id+"; ");
 
 
                 while (!objList.NoFim())
                 {
-                    listOpVendas.Add(new Model.OpVenda
-                    {
-                        ID = objList.Valor("ID"),
-                        Entidade = objList.Valor("Entidade"),
-                        Vendedor = objList.Valor("Vendedor"),
-                        BarraPercentual = objList.Valor("BarraPercentual"),
-                        Descricao = objList.Valor("Descricao")
-                    });
+                    
+                    
+                        listOpVendas.Add(new Model.OpVenda
+                        {
+                            ID = objList.Valor("ID"),
+                            Entidade = objList.Valor("Entidade"),
+                            Vendedor = objList.Valor("Vendedor"),
+                            BarraPercentual = objList.Valor("BarraPercentual"),
+                            Descricao = objList.Valor("Descricao"),
+                            Oportunidade = objList.Valor("Oportunidade"),
+                            Resumo = objList.Valor("CP")
+                        });
+                    
+                    
                     objList.Seguinte();
 
                 }
@@ -355,9 +396,12 @@ namespace FirstREST.Lib_Primavera
                         objOpVenda = PriEngine.Engine.CRM.OportunidadesVenda.Edita(opvenda.Oportunidade);
                         objOpVenda.set_EmModoEdicao(true);
 
+                        objOpVenda.set_Descricao(opvenda.Descricao);
                         objOpVenda.set_Entidade(opvenda.Entidade);
                         objOpVenda.set_Vendedor(opvenda.Vendedor);
                         objOpVenda.set_BarraPercentual(opvenda.BarraPercentual);
+                        string teste = opvenda.Resumo;
+                        objOpVenda.set_Resumo(teste);
 
                         PriEngine.Engine.CRM.OportunidadesVenda.Actualiza(objOpVenda);
 
@@ -429,7 +473,7 @@ namespace FirstREST.Lib_Primavera
                     myOpVenda.set_Entidade(opvenda.Entidade);
                     myOpVenda.set_Vendedor(opvenda.Vendedor);
                     //short bpvalue = 5;
-                    myOpVenda.set_BarraPercentual(5);
+                    myOpVenda.set_BarraPercentual(25);
                     myOpVenda.set_Descricao(opvenda.Descricao);
                     myOpVenda.set_Moeda(opvenda.Moeda);
                     myOpVenda.set_CicloVenda(opvenda.CicloVenda);
@@ -438,6 +482,7 @@ namespace FirstREST.Lib_Primavera
                     myOpVenda.set_DataExpiracao(opvenda.DataExpiracao);
                     myOpVenda.set_EncomendaEfectuada(false);
                     myOpVenda.set_TipoMargemPerc(false);
+                    myOpVenda.set_Resumo("nulo");
 
 
 
@@ -642,7 +687,7 @@ namespace FirstREST.Lib_Primavera
 
                     while (code <= 18)
                     {
-                        objList = PriEngine.Engine.Consulta("SELECT Distritos.Distrito, Distritos.Descricao,  CabecOportunidadesVenda.BarraPercentual, Clientes.TotalDeb FROM Distritos JOIN Clientes on Distritos.Distrito = Clientes.Distrito JOIN CabecOportunidadesVenda ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE Distritos.Distrito = "+code+" AND (SELECT COUNT(Distritos.Distrito) FROM Distritos JOIN Clientes on Distritos.Distrito = Clientes.Distrito JOIN CabecOportunidadesVenda ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE Distritos.Distrito = "+code+") > 2");
+                        objList = PriEngine.Engine.Consulta("SELECT Distritos.Distrito, Distritos.Descricao,  CabecOportunidadesVenda.BarraPercentual, Clientes.TotalDeb FROM Distritos JOIN Clientes on Distritos.Distrito = Clientes.Distrito JOIN CabecOportunidadesVenda ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE Distritos.Distrito = "+code+" AND (SELECT COUNT(Distritos.Distrito) FROM Distritos JOIN Clientes on Distritos.Distrito = Clientes.Distrito JOIN CabecOportunidadesVenda ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE Distritos.Distrito = "+code+") > 2 AND CabecOportunidadesVenda.BarraPercentual != 100 AND CabecOportunidadesVenda.BarraPercentual != 0");
                         // Get OPVs from each district
                         int l = objList.NumLinhas();
                         if (l > 0)

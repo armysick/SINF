@@ -32,4 +32,24 @@ export class HomeService {
 
     return response;
   }
+
+  getResumos(vid){
+    let opt: RequestOptions
+    let myHeaders: Headers = new Headers;
+    myHeaders.set('Access-Control-Allow-Origin', '*');
+    myHeaders.append('Content-type', 'application/json');
+    myHeaders.append('User', 'user');
+    myHeaders.append('Password', 'Feup2016')
+
+
+    opt = new RequestOptions({
+      headers: myHeaders
+    })
+    console.log("opt" + opt.headers);
+
+    var url = 'http://localhost:49822/api/OpVendas?vid='+ vid;
+    var response = this.http.get(url,opt).map(res => res.json());
+
+    return response;
+  }
 }

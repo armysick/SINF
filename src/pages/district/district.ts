@@ -74,5 +74,18 @@ export class DistrictPage {
     );
   }
 
+  bptostatus(BP){
+    if(BP == 25)
+      return "Lead";
+    else if(BP == 80)
+      return "Prospect";
+    else if(BP == 100)
+      return "Completado";
+    else if(BP == 0)
+      return "Cancelada";
+    else if(BP == 30)
+      return "Visitado";
+  }
+
 
 }

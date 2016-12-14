@@ -26,6 +26,9 @@ namespace FirstREST.Controllers
             return Lib_Primavera.PriIntegration.ListaOpVendasByVendedor(id);
         }
 
+        public IEnumerable<Lib_Primavera.Model.OpVenda> Get2(string vid){
+            return Lib_Primavera.PriIntegration.ListaOpVendasByVendedorWithResumo(vid);
+        }
         //
         // GET: /OpVendas/1?dis_id={dis_id}
         /// <summary>

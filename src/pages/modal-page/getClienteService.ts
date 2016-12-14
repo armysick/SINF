@@ -91,4 +91,30 @@ export class getClienteService {
     console.log("RESPONSE : " + response);
     return response;
   }
+
+
+  updateOPV(body, opvid){
+    let opt: RequestOptions
+    let myHeaders: Headers = new Headers;
+    myHeaders.set('Access-Control-Allow-Origin', '*');
+    myHeaders.append('Content-type', 'application/json');
+    myHeaders.append('User', 'user');
+    myHeaders.append('Password', 'Feup2016')
+
+    opt = new RequestOptions({
+      headers: myHeaders
+    })
+
+
+    console.log("opvid: " + opvid);
+    var ovid = opvid.substring(4);
+    console.log("ovid: " + ovid);
+    var oid = +ovid;
+    console.log("oid: " + oid);
+    var url = 'http://localhost:49822/api/OpVendas/' + oid;
+    var response = this.http.put(url,body,opt).map(res => res.json());
+
+    console.log("RESPONSE : " + response);
+    return response;
+  }
 }

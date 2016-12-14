@@ -18,6 +18,7 @@ export class MenuPage {
   myValue: boolean;
   myDistList: boolean;
   start: number;
+  status;
   constructor(public navCtrl: NavController, private myService: GlobalService, private ovService: OpVendaService, private events: Events, private modalCtrl: ModalController) {
     this.myValue=false;
     this.myDistList = false;
@@ -113,5 +114,18 @@ export class MenuPage {
   openCliModal() {
     let modal2 = this.modalCtrl.create(ModalCliPage);
     modal2.present();
+  }
+
+  bptostatus(BP){
+    if(BP == 25)
+      return "Lead";
+    else if(BP == 80)
+      return "Prospect";
+    else if(BP == 100)
+      return "Completado";
+    else if(BP == 0)
+      return "Cancelada";
+    else if(BP == 30)
+      return "Visitado";
   }
 }

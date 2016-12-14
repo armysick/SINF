@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { Platform, NavParams, ViewController } from 'ionic-angular';
 import {getClienteService} from "./getClienteService";
+import {GlobalService} from "../../app/GlobalService";
 
 
 
@@ -13,16 +14,23 @@ import {getClienteService} from "./getClienteService";
 export class ModalPage {
   Cliente;
   OPV;
+  Status;
   Articles;
   selectedarticle;
   selectedarticleid;
   selectedarticleprice;
+  textboxvalue: boolean;
+  selectedstatus;
+  testdata;
   constructor(
     public platform: Platform,
     public params: NavParams,
     public navCtrl: ViewController,
-    private getCliSer: getClienteService
+    private getCliSer: getClienteService,
+    private myService: GlobalService
   ) {
+    this.textboxvalue = false;
+    this.selectedarticle = null;
     this.OPV = this.params.get('any');
 
 
@@ -32,8 +40,27 @@ export class ModalPage {
         Morada: "",
         TotDeb: ""
       };
+
+    this.Status=[
+      {
+        name: 'Falhado',
+        BP: 0
+      },
+      {
+        name: 'Visitado',
+        BP: 30
+      },
+      {
+        name: 'Lead',
+        BP: 25
+      },
+      {
+        name: 'Prospect',
+        BP: 80
+      }
+    ];
     console.log("entidade: " + this.OPV.Entidade);
-    console.log("OPV: " + this.OPV.ID)
+    console.log("OPV: " + this.OPV.ID);
     this.getCliSer.getCliente(this.OPV.Entidade).subscribe(
       data2 => {
         // SUCCESS ON SEARCH 2
@@ -51,7 +78,7 @@ export class ModalPage {
     );
 
 
-      // LOAD ARTICLEs
+    // LOAD ARTICLEs
     this.getCliSer.getArtigos().subscribe(
       data3 => {
         // SUCCESS ON SEARCH
@@ -89,6 +116,25 @@ export class ModalPage {
     this.getCliSer.insertSalesOrder(body).subscribe(
       data4 => {
         var resposta = data4;
+        var body2 =
+          {
+            "Descricao": this.OPV.Descricao,
+            "Entidade": this.OPV.Entidade,
+            "Vendedor": this.myService.vendedor_id,
+            "BarraPercentual": 100,
+            "Oportunidade": this.OPV.Oportunidade,
+            "Resumo" : this.OPV.Resumo
+          }
+        this.getCliSer.updateOPV(body2, this.OPV.Oportunidade).subscribe(
+          data4 => {
+            var resposta = data4;
+            this.dismiss();
+          },
+          err4 => {
+            console.log(err4);
+          },
+          () => console.log('Update OPV COMPLETE')
+        );
         this.dismiss();
       },
       err4 => {
@@ -99,6 +145,46 @@ export class ModalPage {
 
 
   }
+
+
+  terminarVenda(){
+    if(!this.textboxvalue){
+      this.textboxvalue = true;
+    }
+    else{
+      var barrapercentual = 25;
+      for(var i in this.Status){
+        if(this.Status[i].name == this.selectedstatus){
+          barrapercentual = this.Status[i].BP;
+        }
+      }
+
+      var body =
+        {
+          "Descricao": this.OPV.Descricao,
+          "Entidade": this.OPV.Entidade,
+          "Vendedor": this.myService.vendedor_id,
+          "BarraPercentual": barrapercentual,
+          "Oportunidade": this.OPV.Oportunidade,
+          "Resumo": this.OPV.Resumo
+        }
+
+        console.log("this.OPV.MArcacaco " + this.OPV.Resumo);
+      console.log("opv oprtunidade: "+ this.OPV.Oportunidade);
+      this.getCliSer.updateOPV(body, this.OPV.Oportunidade).subscribe(
+        data4 => {
+          var resposta = data4;
+          console.log(data4);
+          this.dismiss();
+        },
+        err4 => {
+          console.log(err4);
+        },
+        () => console.log('Update OPV COMPLETE')
+      );
+    }
+  }
+
   dismiss() {
     this.navCtrl.dismiss();
   }

@@ -1,7 +1,7 @@
-<ion-content>
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>
+<ion-content >
+  <ion-header  >
+    <ion-toolbar color="primary" >
+      <ion-title >
         Página de Inserção de Cliente
       </ion-title>
       <ion-buttons start>
@@ -13,26 +13,24 @@
     </ion-toolbar>
   </ion-header>
   <ion-item>
-    <!-- EMPTY SPACING -->
-    <br>
-    <br>
-    <br>
+
+
   </ion-item>
   <ion-row>
-    <ion-item>
-      <ion-label stacked><h1>Introduza o código do cliente (must be unique): </h1> </ion-label>
+    <ion-item style="background-color: #eCeCeC">
+      <ion-label stacked><h1>Código do cliente (must be unique): </h1> </ion-label>
       <ion-input [value]="codigo" [(ngModel)]="codigo" ></ion-input>
     </ion-item>
   </ion-row>
   <ion-row>
-    <ion-item>
-      <ion-label stacked><h1>Introduza o nome do cliente: </h1> </ion-label>
+    <ion-item  style="background-color: #fefefe">
+      <ion-label stacked><h1>Nome: </h1> </ion-label>
       <ion-input [value]="nome" [(ngModel)]="nome" ></ion-input>
     </ion-item>
   </ion-row>
   <ion-row>
-    <ion-item>
-      <ion-label stacked><h1>Introduza a morada: </h1> </ion-label>
+    <ion-item style="background-color: #eCeCeC">
+      <ion-label stacked><h1>Morada: </h1> </ion-label>
       <ion-input [value]="morada" [(ngModel)]="morada" ></ion-input>
     </ion-item>
   </ion-row>
@@ -43,16 +41,16 @@
     </ion-item>
   </ion-row>-->
   <ion-row>
-    <ion-item>
-      <ion-label>Selecione o distrito: </ion-label>
+    <ion-item style="background-color: #fefefe">
+      <ion-label>Distrito: </ion-label>
       <ion-select [(ngModel)]="selecteddist" >
         <ion-option *ngFor="let Distr of districts">{{Distr.nome}}</ion-option>
       </ion-select>
     </ion-item>
   </ion-row>
   <ion-row>
-    <ion-item>
-      <ion-label stacked><h1>Introduza o numero de contribuinte: </h1> </ion-label>
+    <ion-item style="background-color: #eCeCeC">
+      <ion-label stacked><h1>Número de contribuinte: </h1> </ion-label>
       <ion-input [value]="contribuinte" [(ngModel)]="contribuinte" ></ion-input>
     </ion-item>
   </ion-row>
@@ -62,6 +60,7 @@
     <ion-col width-33>
       <button ion-button (click)="registarNovoCliente()">Submeter</button>
     </ion-col>
+
   </ion-row>
 
   <div *ngIf="myValue">
