@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding style="background-color: #EFFFFD;">
   <h2>Welcome to Sales Force App!</h2>
 
   <div >
@@ -15,16 +15,16 @@
 
   <ion-list>
     <div *ngIf="myService.iddistrito != did1">
-      <button ion-button color = "light" primary block *ngIf="myValue1" (click)="selectDist1()">    {{Dis1}} _______________||_____________ Rating:   {{Rat1}} / 5</button>
+      <button ion-button color = "light" primary block *ngIf="myValue1" (click)="selectDist1()">    {{Dis1}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rating:   {{Rat1}} / 5</button>
     </div>
     <div *ngIf="myService.iddistrito == did1">
-      <button ion-button color = "secondary" primary block *ngIf="myValue1" >{{Dis1}}   ||   {{Rat1}} / 5</button>
+      <button ion-button color = "secondary" primary block *ngIf="myValue1" >    {{Dis1}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rating:   {{Rat1}} / 5</button>
     </div>
     <div *ngIf="myService.iddistrito != did2">
-      <button ion-button color = "light" primary block *ngIf="myValue2" (click)="selectDist2()">{{Dis2}}   ||    {{Rat2}}/5</button>
+      <button ion-button color = "light" primary block *ngIf="myValue2" (click)="selectDist2()">    {{Dis2}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rating:   {{Rat2}} / 5</button>
     </div>
     <div *ngIf="myService.iddistrito == did2">
-      <button ion-button color = "secondary" primary block *ngIf="myValue2" >{{Dis2}}   ||    {{Rat2}}/5</button>
+      <button ion-button color = "secondary" primary block *ngIf="myValue2" >    {{Dis2}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rating:   {{Rat2}} / 5</button>
     </div>
   </ion-list>
 

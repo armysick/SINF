@@ -687,7 +687,7 @@ namespace FirstREST.Lib_Primavera
 
                     while (code <= 18)
                     {
-                        objList = PriEngine.Engine.Consulta("SELECT Distritos.Distrito, Distritos.Descricao,  CabecOportunidadesVenda.BarraPercentual, Clientes.TotalDeb FROM Distritos JOIN Clientes on Distritos.Distrito = Clientes.Distrito JOIN CabecOportunidadesVenda ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE Distritos.Distrito = "+code+" AND (SELECT COUNT(Distritos.Distrito) FROM Distritos JOIN Clientes on Distritos.Distrito = Clientes.Distrito JOIN CabecOportunidadesVenda ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE Distritos.Distrito = "+code+") > 2 AND CabecOportunidadesVenda.BarraPercentual != 100 AND CabecOportunidadesVenda.BarraPercentual != 0");
+                        objList = PriEngine.Engine.Consulta("SELECT Distritos.Distrito, Distritos.Descricao,  CabecOportunidadesVenda.BarraPercentual, Clientes.TotalDeb FROM Distritos JOIN Clientes on Distritos.Distrito = Clientes.Distrito JOIN CabecOportunidadesVenda ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE Distritos.Distrito = " + code + " AND (SELECT COUNT(Distritos.Distrito) FROM Distritos JOIN Clientes on Distritos.Distrito = Clientes.Distrito JOIN CabecOportunidadesVenda ON Clientes.Cliente = CabecOportunidadesVenda.Entidade WHERE Distritos.Distrito = " + code + ") > 2 AND CabecOportunidadesVenda.BarraPercentual != 100 AND CabecOportunidadesVenda.BarraPercentual != 0 AND CabecOportunidadesVenda.Vendedor = "+vid);
                         // Get OPVs from each district
                         int l = objList.NumLinhas();
                         if (l > 0)
