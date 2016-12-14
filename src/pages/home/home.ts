@@ -18,9 +18,11 @@ export class HomePage {
   Dis1: any;
   Dis2: any;
   Rati1: any;
-  Rati2: number;
+  Rati2: any;
   Rat1: any;
   Rat2: any;
+  did1: number;
+  did2: number;
   myValue1: boolean;
   myValue2: boolean;
   constructor(public navCtrl: NavController, private myService: GlobalService, private homeService: HomeService){
@@ -31,6 +33,7 @@ export class HomePage {
       data3 => {
         for(var i in data3){
           if(this.Dis1 == null) {
+            this.did1 = data3[i].ID;
             this.Dis1 = data3[i].Descricao;
             this.Rati1 = data3[i].Rating * 5;
             this.Rat1 = new Number(this.Rati1);
@@ -38,6 +41,7 @@ export class HomePage {
             this.myValue1 = true;
           }
           else {
+            this.did2 = data3[i].ID;
             this.Dis2 = data3[i].Descricao;
             this.Rati2 = data3[i].Rating * 5;
             this.Rat2 = new Number(this.Rati2);
@@ -51,6 +55,13 @@ export class HomePage {
       },
       () => console.log('Suggest COMPLETE')
     );
+  }
+
+  selectDist1() {
+    this.myService.iddistrito = this.did1;
+  }
+  selectDist2(){
+      this.myService.iddistrito = this.did2;
   }
 
 

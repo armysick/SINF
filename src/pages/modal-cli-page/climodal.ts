@@ -19,6 +19,8 @@ export class ModalCliPage {
     distrito: any;
     contribuinte: any;
     myValue: boolean;
+    selecteddist;
+    districts;
   constructor(
     public platform: Platform,
     public params: NavParams,
@@ -26,11 +28,97 @@ export class ModalCliPage {
     private cliService : InserirClienteService,
   ) {
     this.myValue = false;
+
+    this.districts = [
+      {
+        id: '1',
+        nome: 'Aveiro'
+      },
+      {
+        id: '2',
+        nome: 'Beja'
+      },
+      {
+        id: '3',
+        nome: 'Braga'
+      },
+      {
+        id: '4',
+        nome: 'Bragança'
+      },
+      {
+        id: '5',
+        nome: 'Castelo Branco'
+      },
+      {
+        id: '6',
+        nome: 'Coimbra'
+      },
+      {
+        id: '7',
+        nome: 'Évora'
+      },
+      {
+        id: '8',
+        nome: 'Faro'
+      },
+      {
+        id: '9',
+        nome: 'Guarda'
+      },
+      {
+        id: '10',
+        nome: 'Leiria'
+      },
+      {
+        id: '11',
+        nome: 'Lisboa'
+      },
+      {
+        id: '12',
+        nome: 'Portalegre'
+      },
+      {
+        id: '13',
+        nome: 'Porto'
+      },
+      {
+        id: '14',
+        nome: 'Santarém'
+      },
+      {
+        id: '15',
+        nome: 'Setúbal'
+      },
+      {
+        id: '16',
+        nome: 'Viana do Castelo'
+      },
+      {
+        id: '17',
+        nome: 'Vila Real'
+      },
+      {
+        id: '18',
+        nome: 'Viseu'
+      }
+    ];
   }
 
   registarNovoCliente(){
     var dt = new Date().toLocaleDateString();
     console.log("A DATA É: " + dt);
+
+    for(var i in this.districts){
+      if(this.districts[i].nome == this.selecteddist ){
+          this.distrito = this.districts[i].id;
+          break;
+      }
+    }
+    if(this.distrito < 10){
+      this.distrito = "0" + this.distrito;
+    }
+      console.log("distrito: " + this.distrito);
 
         var body = {
           "Morada": this.morada,

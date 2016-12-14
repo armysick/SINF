@@ -8,6 +8,11 @@ namespace FirstREST.Lib_Primavera.Model
     public class Distrito
     {
 
+        public int ID
+        {
+            get;
+            set;
+        }
         public double Rating
         {
             get;

@@ -36,10 +36,18 @@
       <ion-input [value]="morada" [(ngModel)]="morada" ></ion-input>
     </ion-item>
   </ion-row>
-  <ion-row>
+  <!--<ion-row>
     <ion-item>
       <ion-label stacked><h1>Introduza o Distrito: </h1> </ion-label>
       <ion-input [value]="distrito" [(ngModel)]="distrito" ></ion-input>
+    </ion-item>
+  </ion-row>-->
+  <ion-row>
+    <ion-item>
+      <ion-label>Selecione o distrito: </ion-label>
+      <ion-select [(ngModel)]="selecteddist" >
+        <ion-option *ngFor="let Distr of districts">{{Distr.nome}}</ion-option>
+      </ion-select>
     </ion-item>
   </ion-row>
   <ion-row>

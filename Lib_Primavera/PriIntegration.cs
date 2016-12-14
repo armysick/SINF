@@ -647,7 +647,7 @@ namespace FirstREST.Lib_Primavera
                             while (!objList.NoFim())
                             {
                                 totaldeb += objList.Valor("TotalDeb");
-                                LP = objList.Valor("BarraPercentual");
+                                LP += objList.Valor("BarraPercentual");
                                 objList.Seguinte();
                             }
                             totaldeb = totaldeb / size;
@@ -664,7 +664,7 @@ namespace FirstREST.Lib_Primavera
 
                             if (5 > size)
                                 size = 0;
-                            if (10 > size)
+                            else if (10 > size)
                                 size = 0.5;
                             else if (size >= 10)
                                 size = 1;
@@ -694,12 +694,14 @@ namespace FirstREST.Lib_Primavera
                     if(did1!=-1){
                         myDistrito.Add(new Model.Distrito
                         {
+                            ID = did1,
                             Rating = valor1,
                             Descricao = descri1
                         });
                         if(did2!=-1){
                             myDistrito.Add(new Model.Distrito
                             {
+                                ID = did2,
                                 Rating = valor2,
                                 Descricao = descri2
                             });
