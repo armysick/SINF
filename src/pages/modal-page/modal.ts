@@ -123,7 +123,7 @@ export class ModalPage {
             "Vendedor": this.myService.vendedor_id,
             "BarraPercentual": 100,
             "Oportunidade": this.OPV.Oportunidade,
-            "Resumo" : this.OPV.Resumo
+            "Resumo" : 'nulo'
           }
         this.getCliSer.updateOPV(body2, this.OPV.Oportunidade).subscribe(
           data4 => {
